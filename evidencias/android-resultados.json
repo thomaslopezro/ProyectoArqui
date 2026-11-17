@@ -1,0 +1,28 @@
+{
+  "resultado": "OK",
+  "pruebas": [
+    "Instalación del APK original en emulador de Android Studio",
+    "Captura sin conexión al servidor",
+    "Persistencia tras cierre forzado y reapertura",
+    "Sincronización con servidor integrado",
+    "Una sola evaluación en panorama, calor y GeoJSON"
+  ],
+  "evaluacion": {
+    "id": "aae3af99-273e-428d-a793-b095939cdc7c",
+    "clase": "EVALUACION",
+    "titulo": "Evaluación de daños",
+    "tipo": null,
+    "severidad": null,
+    "nivelAfectacion": 5,
+    "eventoId": "apk'test'integrado",
+    "descripcion": "rueba offline apk",
+    "latitud": 4.6097,
+    "longitud": 0,
+    "version": null,
+    "registradaEn": "2026-11-08T00:15:31.414324+00:00",
+    "evaluador": null,
+    "organizacion": null,
+    "activo": null,
+    "evidenciaId": null
+  }
+}

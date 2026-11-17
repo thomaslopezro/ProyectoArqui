@@ -1,0 +1,17 @@
+Mensaje confirmado por RabbitMQ: {"id": "amqp-89c52476d9", "tipo": "INUNDACION", "ubicacion": "Bogota", "descripcion": "Desbordamiento del rio", "severidad": "ALTA", "fecha": "2026-10-21T16:44:23.165736Z"}
+
+taller3-prueba-receptor-a:
+Esperando mensajes en sistema.bomberos-84655d7ef1
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:42:37.670291Z", "id": "rest-84655d7ef1", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:43:15.018973Z", "id": "smtp-8550f677cb", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:43:43.233210Z", "id": "reinicio-8550f677cb", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento del rio", "fecha": "2026-10-21T16:44:23.165736Z", "id": "amqp-89c52476d9", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota"}
+
+taller3-prueba-receptor-b:
+Esperando mensajes en sistema.defensa-84655d7ef1
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:42:37.670291Z", "id": "rest-84655d7ef1", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:43:15.018973Z", "id": "smtp-8550f677cb", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento reportado por el productor de prueba", "fecha": "2026-10-21T16:43:43.233210Z", "id": "reinicio-8550f677cb", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota - zona de demostracion"}
+Desastre recibido: {"descripcion": "Desbordamiento del rio", "fecha": "2026-10-21T16:44:23.165736Z", "id": "amqp-89c52476d9", "severidad": "ALTA", "tipo": "INUNDACION", "ubicacion": "Bogota"}
+
+OK: productor y dos consumidores AMQP independientes verificados. ID: amqp-89c52476d9

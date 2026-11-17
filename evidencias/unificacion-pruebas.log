@@ -1,0 +1,63 @@
+OK: mapas requieren sesión
+OK: catálogo requiere sesión
+OK: clave incorrecta rechazada
+OK: login coordinador_demo
+OK: crear rol EVALUADOR
+OK: login evaluador_a09986a913
+OK: crear rol CONSULTA
+OK: login consulta_a09986a913
+OK: suscripción del organismo
+OK: evaluador no crea desastre
+OK: consulta no crea desastre
+OK: desastre persistido en núcleo
+OK: diez reintentos conservan el registro
+OK: cambio de contenido devuelve conflicto
+OK: núcleo → outbox → Taller3 → RabbitMQ → correo confirmado
+OK: catálogo conserva organismo
+OK: consulta no sincroniza
+OK: evaluador sincroniza foto y captura
+OK: evaluación asociada al desastre del núcleo
+OK: identidad procede del token, no del JSON
+OK: foto conservada y autorizada
+OK: foto no es pública
+OK: reintento móvil idéntico no duplica
+OK: mapa/calor/GeoJSON /api/panorama?eventoId=UNIFICADO-a09986a913
+OK: mapa/calor/GeoJSON /api/campo/sitios?eventoId=UNIFICADO-a09986a913
+OK: mapa/calor/GeoJSON /api/panorama/geojson?eventoId=UNIFICADO-a09986a913
+OK: DAL original conserva creación
+OK: evaluador no modifica puntos de coordinación
+OK: login otro_a09986a913
+OK: aislamiento de detalle /api/campo/evaluaciones/b9a1ce29-886a-4f4c-af17-53d619800d5c
+OK: aislamiento de detalle /api/campo/evaluaciones/b9a1ce29-886a-4f4c-af17-53d619800d5c/foto
+OK: aislamiento de detalle /api/afectaciones/20864cab-cf8c-4e81-952f-1e4baca8667c
+OK: aislamiento de consulta /api/desastres
+OK: aislamiento de consulta /api/panorama
+OK: aislamiento de consulta /api/campo/sitios
+OK: aislamiento de consulta /api/panorama/geojson
+OK: aislamiento de consulta /api/sistemas
+OK: organismo ajeno no reasocia captura
+OK: referencia existente no cambia de propietario
+OK: conflicto de propietario revierte inserción
+ Container arqui-integracion-rabbitmq-1 Stopping 
+ Container arqui-integracion-rabbitmq-1 Stopped 
+OK: desastre durable aunque broker esté detenido
+OK: notificación queda pendiente en outbox
+OK: mapas siguen disponibles sin broker
+ Container arqui-integracion-rabbitmq-1 Starting 
+ Container arqui-integracion-rabbitmq-1 Started 
+OK: notificación pendiente recuperada al volver broker
+ Container arqui-integracion-api-1 Restarting 
+ Container arqui-integracion-nucleo-1 Restarting 
+ Container arqui-integracion-api-1 Started 
+ Container arqui-integracion-nucleo-1 Started 
+OK: sesión y desastre sobreviven reinicio
+OK: captura sobrevive reinicio
+OK: logout integrado
+OK: token revocado no accede a mapas
+OK: logout integrado
+OK: token revocado no accede a mapas
+OK: logout integrado
+OK: token revocado no accede a mapas
+OK: logout integrado
+OK: token revocado no accede a mapas
+{"resultado": "APROBADO", "desastre": "UNIFICADO-a09986a913", "evaluacion": "b9a1ce29-886a-4f4c-af17-53d619800d5c", "organizacion": "e713f264-a287-4532-a1eb-912ad377546a"}

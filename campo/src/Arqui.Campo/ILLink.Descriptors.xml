@@ -1,0 +1,6 @@
+<linker>
+  <assembly fullname="Arqui.Campo">
+    <type fullname="Arqui.Campo.EvaluacionPendiente" preserve="all" />
+    <type fullname="Arqui.Campo.ResumenPendiente" preserve="all" />
+  </assembly>
+</linker>

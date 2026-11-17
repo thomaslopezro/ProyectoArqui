@@ -1,0 +1,40 @@
+# Módulo de Reconstrucción: base de datos, backend Spring Boot e interfaz React.
+#   docker compose up --build
+#   Interfaz: http://localhost:8087   API REST: http://localhost:8086   gRPC: localhost:9096
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: reconstruccion
+      POSTGRES_USER: reconstruccion
+      POSTGRES_PASSWORD: reconstruccion
+    volumes:
+      - datos_reconstruccion:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reconstruccion -d reconstruccion"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/reconstruccion
+      SPRING_DATASOURCE_USERNAME: reconstruccion
+      SPRING_DATASOURCE_PASSWORD: reconstruccion
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8086:8086"
+      - "9096:9096"
+
+  web:
+    build: ./web
+    depends_on:
+      - backend
+    ports:
+      - "8087:80"
+
+volumes:
+  datos_reconstruccion:

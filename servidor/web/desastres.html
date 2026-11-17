@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Territorio · Desastres y notificaciones</title><link rel="stylesheet" href="styles.css?v=030"><script defer src="auth.js?v=030"></script><script defer src="desastres.js?v=evolucion1"></script></head>
+<body>
+<header><a class="brand" href="/">⌖ TERRITORIO</a><span class="header-note">DESASTRES Y NOTIFICACIONES</span></header>
+<main>
+<a class="button secondary" href="solicitudes.html">Solicitudes de recursos</a><a class="button secondary" href="/reconstruccion/">Reconstrucción</a>
+<section class="intro"><div><p class="eyebrow">COORDINACIÓN DE LA EMERGENCIA</p><h1>Un evento, una referencia.</h1><p>Registra el desastre y usa su identificador para asociar las evaluaciones de campo.</p></div><a class="button secondary" href="/">Volver a los mapas</a></section>
+<p id="estado" class="message" role="status">Consultando el registro…</p>
+<div class="workspace">
+<section class="panel form-panel"><h2>Registrar desastre</h2>
+<form id="nuevo-desastre">
+<label for="desastre-id">Identificador</label><input id="desastre-id" required maxlength="100" pattern="[a-zA-Z0-9_-]{1,100}">
+<label for="desastre-tipo">Tipo</label><select id="desastre-tipo"><option value="INUNDACION">Inundación</option><option value="TERREMOTO">Terremoto</option><option value="INCENDIO">Incendio</option><option value="DESLIZAMIENTO">Deslizamiento</option><option value="OTRO">Otro</option></select>
+<label for="desastre-severidad">Severidad del desastre</label><select id="desastre-severidad"><option value="BAJA">Baja</option><option value="MEDIA">Media</option><option value="ALTA">Alta</option><option value="CRITICA">Crítica</option></select>
+<label for="desastre-ubicacion">Zona o ubicación</label><input id="desastre-ubicacion" required maxlength="200" placeholder="Municipio, barrio o zona">
+<label for="desastre-fecha">Fecha y hora del evento</label><input id="desastre-fecha" type="datetime-local" required>
+<label for="desastre-descripcion">Descripción</label><textarea id="desastre-descripcion" required maxlength="2000" rows="3"></textarea>
+<p class="hint">El desastre se guarda antes de enviar las notificaciones. Conserva el mismo identificador si necesitas reintentar.</p>
+<button id="crear-desastre" class="primary full">Registrar desastre</button>
+</form></section>
+<section class="panel form-panel"><div class="records-heading"><h2>Desastres registrados</h2><button id="actualizar" class="secondary">Actualizar</button></div><div class="table-wrap"><table><thead><tr><th>Desastre / ubicación</th><th>Severidad</th><th>Notificaciones</th><th>Consulta</th></tr></thead><tbody id="desastres"></tbody></table></div><p id="sin-desastres" class="empty" hidden>No hay desastres registrados todavía. Las evaluaciones preliminares pueden guardarse desde el mapa.</p></section>
+</div>
+<section class="panel form-panel records"><h2>Sistemas que reciben notificaciones</h2><p class="muted">Los sistemas registrados reciben los nuevos desastres. En esta demostración los correos llegan al <a href="http://127.0.0.1:18026" target="_blank" rel="noopener">buzón local de prueba</a>.</p>
+<form id="nuevo-sistema"><div class="two"><div><label for="sistema-id">Identificador del sistema</label><input id="sistema-id" required maxlength="50" pattern="[a-zA-Z0-9_-]{1,50}"></div><div><label for="sistema-nombre">Nombre</label><input id="sistema-nombre" required maxlength="100"></div></div><label for="sistema-correo">Correo destinatario</label><input id="sistema-correo" type="email" required maxlength="254" placeholder="equipo@example.test"><button id="crear-sistema" class="primary">Registrar sistema</button></form>
+<p id="estado-sistemas" role="status"></p><ul id="sistemas"></ul>
+</section>
+</main></body></html>

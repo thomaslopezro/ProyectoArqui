@@ -1,0 +1,7 @@
+OK: creación por .NET → Java → RabbitMQ → registro → catálogo → correo y cola del sistema.
+OK: evaluación vinculada al desastre original en panorama, calor y GeoJSON; daño y severidad separados.
+OK: asociación posterior de preliminar sin cambiar el contenido original ni romper reintentos.
+OK: referencia pendiente se vincula al llegar su desastre, sin reenviar la evaluación.
+OK: identificador de 100 caracteres conservado y errores Java propagados correctamente.
+OK: caída de Java no bloquea mapas ni captura; catálogo y vínculos sobreviven al reinicio de .NET.
+{"resultado": "APROBADO", "desastre": "PRUEBA-T3-2a04c90368c1", "sistema": "prueba-t3-2a04c90368c1", "evaluacion": "e6974e6a-19d9-4b64-a86d-4b3133e61d4e", "preliminarVinculada": "5cb06c76-c99d-4717-9ca4-e6a61b6c69c6"}

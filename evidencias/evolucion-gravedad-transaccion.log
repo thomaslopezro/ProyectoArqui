@@ -1,0 +1,2 @@
+OK: fallo del aviso revierte gravedad, versión e historial sin confirmación parcial.
+OK: el mismo cambio puede reintentarse tras el fallo y genera una sola versión.

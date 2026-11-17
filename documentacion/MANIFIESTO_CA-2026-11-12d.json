@@ -1,0 +1,32 @@
+{
+  "referencia": "CA-2026-11-12d",
+  "reemplaza": "CA-2026-11-12c",
+  "estado": "referencia con reservas, sin certificacion de cumplimiento; ronda de arquitectura cerrada",
+  "cambios_frente_a_CA-2026-11-12c": [
+    "SAD 9.2: si el nucleo declara invalida una sesion, servidor borra la ultima validacion recordada, para que una caida posterior no reactive su acceso por la gracia; el cierre de sesion tambien la borra; un 403 por falta de permiso sobre un recurso no borra nada",
+    "SAD 15.2 y ATAM 8: ese caso se agrega a la prueba de caida del nucleo",
+    "SRS y matriz sin cambios"
+  ],
+  "pendiente_para_implementacion": [
+    "Codigo del modo degradado en servidor y en el nucleo",
+    "Casos de prueba detallados del modo degradado, a partir del criterio de SAD 15.2 y ATAM 8"
+  ],
+  "reservas": [
+    "E-18",
+    "E-31",
+    "E-32",
+    "E-33",
+    "E-36",
+    "S-1/D-02",
+    "D-12"
+  ],
+  "documentos": {
+    "ATAM_fuente.md": "1b9b03e2b842a297a14afaa2472a9d19fe3e284f6fbcc5c2ae127a00d1cb7ae7",
+    "ATAM_v1.0_Plataforma_Gestion_Desastres.pdf": "7d88020e94cfd516915205481959ec8e39eff2b94b1b27bde8a4b2ea31d56e6d",
+    "MATRIZ_COBERTURA_ENUNCIADO.md": "8181e2a05afa2a0325abbb13c3a9f78760aeeb26b4fdbdc94a7a188ba8a902b4",
+    "MATRIZ_COBERTURA_ENUNCIADO.pdf": "a7a408cc8c779f80e5604076b7decc1986211d9c87fb913887eda901c4efb081",
+    "SAD_fuente.md": "8e2796f3128be1f8520fec943f0ce0909ee3a140751c9ef3709b720a6ce1d5fc",
+    "SAD_v1.0_Plataforma_Gestion_Desastres.pdf": "8e212969e31551845606177a5e1cc46f0fc05e9a059151524cd85ed4c3796e85",
+    "SRS_v1.0_Plataforma_Gestion_Desastres.pdf": "3432280ca685b74a9b7525b609dc9ee589d977f32eee14f4eb69447d4d0702bb"
+  }
+}

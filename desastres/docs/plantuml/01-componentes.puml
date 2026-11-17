@@ -1,0 +1,58 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam packageStyle rectangle
+left to right direction
+title Taller 3 — Componentes y dependencias
+
+actor "Operador / cliente HTTP" as Operador
+component "Productor AMQP externo" as Productor
+queue "RabbitMQ" as Rabbit
+node "Payara — Jakarta EE 10\ngestion-emergencias.war" {
+  package "Infraestructura de entrada" {
+    component "DesastreResource\nJakarta REST" as REST
+    component "ProcesadorMensajes\nEJB Singleton / temporizador" as Procesador
+  }
+  package "Aplicación" {
+    component "DesastreServicio\nEJB Stateless" as Servicio
+    interface RegistroRepositorio as IRegistro
+    interface NotificadorMensajes as IMensajes
+    interface NotificadorCorreo as ICorreo
+  }
+  package "Dominio" {
+    component "Desastre / Sistema / Registro" as Modelos
+  }
+  package "Infraestructura de salida" {
+    component "RepositorioArchivo\nEJB Singleton" as Archivo
+    component "RabbitMensajes\nAdaptador AMQP" as AMQP
+    component "CorreoSmtp\nJakarta Mail" as SMTP
+  }
+}
+database "estado.json\nVolumen registro" as Datos
+component "Mailpit\nServidor SMTP local" as Mailpit
+component "Sistemas receptores\nUna cola por sistema" as Sistemas
+
+Operador --> REST : HTTP / JSON
+Productor --> Rabbit : Publicar desastre / AMQP
+REST --> Servicio : Alta de sistemas y consultas
+REST --> AMQP : Publicar desastre / HTTP 202
+Procesador --> AMQP : Consumir entrada y correo
+Procesador --> Servicio : Registrar / despachar / enviar
+Servicio --> Modelos : Validación y contratos
+Servicio --> IRegistro
+Servicio --> IMensajes
+Servicio --> ICorreo
+Archivo ..|> IRegistro
+AMQP ..|> IMensajes
+SMTP ..|> ICorreo
+Archivo --> Datos : Reemplazo atómico
+AMQP --> Rabbit : AMQP / ACK / confirms
+SMTP --> Mailpit : SMTP
+Rabbit --> Sistemas : Entrega de notificaciones
+
+note bottom of Servicio
+El negocio depende de puertos de salida.
+Los adaptadores encapsulan archivo, AMQP y SMTP.
+end note
+@enduml

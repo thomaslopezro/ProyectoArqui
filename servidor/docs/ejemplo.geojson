@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.08175,
+          4.60971
+        ]
+      },
+      "properties": {
+        "titulo": "DEMO · Inundación — Bogotá",
+        "tipo": "INUNDACION",
+        "severidad": "ALTA",
+        "descripcion": "Ejemplo ficticio para el taller. No corresponde a un reporte real."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.517,
+          5.067
+        ]
+      },
+      "properties": {
+        "titulo": "DEMO · Deslizamiento — Manizales",
+        "tipo": "DESLIZAMIENTO",
+        "severidad": "MEDIA",
+        "descripcion": "Ejemplo ficticio para el taller. No corresponde a un reporte real."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.532,
+          3.4516
+        ]
+      },
+      "properties": {
+        "titulo": "DEMO · Incendio — Cali",
+        "tipo": "INCENDIO",
+        "severidad": "CRITICA",
+        "descripcion": "Ejemplo ficticio para el taller. No corresponde a un reporte real."
+      }
+    }
+  ]
+}

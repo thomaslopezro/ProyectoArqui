@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseMaui>true</UseMaui>
+    <DefineConstants Condition="'$(PruebasCampo)' == 'true'">$(DefineConstants);CAMPO_PRUEBAS</DefineConstants>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationTitle>Arqui Campo</ApplicationTitle>
+    <ApplicationId>co.edu.arqui.campo</ApplicationId>
+    <ApplicationDisplayVersion>0.4.0</ApplicationDisplayVersion>
+    <ApplicationVersion>4</ApplicationVersion>
+    <SupportedOSPlatformVersion>24.0</SupportedOSPlatformVersion>
+    <AndroidPackageFormats>apk</AndroidPackageFormats>
+    <UseDefaultPublishRuntimeIdentifier>false</UseDefaultPublishRuntimeIdentifier>
+
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android" Version="2.1.14" />
+
+    <TrimmerRootDescriptor Include="ILLink.Descriptors.xml" />
+
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arqui Campo · Mapa de calor</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css?v=030">
+<link rel="stylesheet" href="calor.css?v=030">
+<script defer src="auth.js?v=030"></script><script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="calor.js?v=030"></script>
+</head>
+<body>
+<header><a class="brand" href="/">TERRITORIO</a><span class="header-note">ARQUI CAMPO</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">EVALUACIÓN DE DAÑOS</p>
+<h1>Mapa de calor</h1><p>Explora dónde se concentran las afectaciones capturadas en la web o sincronizadas desde Android.</p></div><a class="button secondary" href="/">Volver al mapa principal</a></section>
+<section class="panel heat-panel" aria-label="Mapa de calor de afectaciones">
+<form id="filtros" class="filters">
+<label for="evento">Desastre</label>
+<input id="evento" placeholder="Todos los desastres" maxlength="100">
+<button class="primary" type="submit">Actualizar</button>
+</form>
+<p id="estado" role="status">Cargando evaluaciones…</p>
+<div id="mapa" aria-label="Mapa de calor. Los valores de los sitios se detallan en la tabla."></div>
+<p id="estado-mapa" role="status"></p>
+<div class="heat-legend"><span>Menor intensidad</span><span class="heat-scale" aria-hidden="true"></span><span>Mayor intensidad</span></div>
+<p>La intensidad combina el nivel reportado de 1 a 5 y la cercanía entre sitios. El color representa los reportes visibles a esta escala de zoom.</p>
+</section>
+<section class="panel heat-panel">
+<h2>Evaluaciones incorporadas</h2>
+<div class="heat-table"><table>
+<thead><tr><th scope="col">Desastre</th><th scope="col">Latitud</th><th scope="col">Longitud</th><th scope="col">Nivel</th></tr></thead>
+<tbody id="sitios"></tbody>
+</table></div>
+</section>
+</main>
+</body>
+</html>

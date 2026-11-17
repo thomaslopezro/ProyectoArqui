@@ -1,0 +1,7 @@
+OK: SMTP caido no impide registrar ni publicar a los sistemas
+OK: correos pendientes recuperados tras restablecer SMTP
+OK: broker caido devuelve 503; no se informa una aceptacion falsa
+OK: aplicacion reconecto despues del reinicio de RabbitMQ
+OK: broker acepto el desastre mientras Jakarta estaba detenido
+OK: tras reiniciar Jakarta se conservaron registros y sistemas y se proceso el mensaje pendiente
+{"eventoSMTP": "smtp-8550f677cb", "eventoReinicio": "reinicio-8550f677cb", "resultado": "APROBADO"}

@@ -1,0 +1,7 @@
+embed-server --server-config=standalone.xml --std-out=echo
+
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-module-name=org.postgresql,driver-class-name=org.postgresql.Driver)
+
+data-source add --name=PGDRDS --jndi-name=java:/jdbc/PGDRDS --driver-name=postgresql --connection-url=jdbc:postgresql://database:5432/pgdrdb --user-name=pgdr --password=${env.PGDR_DB_PASSWORD} --jta=true --enabled=true
+
+stop-embedded-server

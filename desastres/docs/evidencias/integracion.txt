@@ -1,0 +1,11 @@
+OK: Payara, registro y RabbitMQ listos
+OK: dos sistemas registrados con colas durables independientes
+OK: productor publico directamente en RabbitMQ, sin invocar el endpoint de registro
+OK: consumidor Jakarta registro todos los campos del desastre y publico las notificaciones
+OK: ambos sistemas recibieron su copia aun sin estar conectados al publicarse
+OK: correos enviados por Jakarta Mail y recibidos por SMTP en Mailpit
+OK: reentrega con el mismo ID no duplico el registro, las notificaciones ni los correos
+OK: entrada REST auxiliar devuelve 202 y pasa por RabbitMQ
+OK: mensaje invalido aislado en cola de errores; no se registro ni detuvo el procesamiento
+OK: validacion de sistemas y eliminacion de las rutas del taller anterior
+{"eventoBroker": "broker-84655d7ef1", "eventoRest": "rest-84655d7ef1", "sistemas": [{"id": "bomberos-84655d7ef1", "nombre": "bomberos", "correo": "bomberos-84655d7ef1@example.test"}, {"id": "defensa-84655d7ef1", "nombre": "defensa", "correo": "defensa-84655d7ef1@example.test"}], "fecha": "2026-10-21T16:42:39.890820+00:00", "resultado": "APROBADO"}

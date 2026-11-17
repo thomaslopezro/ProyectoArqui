@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Territorio · Mapa de afectaciones</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css?v=030">
+<script defer src="auth.js?v=030"></script><script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="app.js?v=evolucion1"></script>
+</head>
+<body>
+<header><a class="brand" href="/" aria-label="Territorio, inicio"><span class="brand-icon">⌖</span> TERRITORIO</a><span class="header-note">OBSERVATORIO DE AFECTACIONES</span><span class="badge">Evaluación y seguimiento</span></header>
+<main>
+<a class="button secondary" href="solicitudes.html">Solicitudes de recursos</a><a class="button secondary" href="/reconstruccion/">Reconstrucción</a>
+<section class="intro"><div><p class="eyebrow">INFORMACIÓN PARA ENTENDER EL TERRITORIO</p><h1>Cada punto cuenta.</h1><p>Consulta afectaciones y evaluaciones de daños capturadas en la web o sincronizadas desde Android.</p></div><div class="intro-actions"><a class="button secondary" href="desastres.html">Desastres y notificaciones</a><a class="button secondary" href="calor.html">Mapa de calor · Arqui Campo</a><button id="exportar" class="secondary">↓ Exportar vista GeoJSON</button><label class="button secondary" for="archivo">↑ Importar afectaciones</label><input id="archivo" type="file" accept=".json,.geojson,application/json" hidden></div></section>
+<div id="mensaje" class="message" role="status" aria-live="polite">Conectando con el registro…</div>
+<section class="workspace">
+<aside class="panel form-panel"><div class="panel-heading"><span class="step">01</span><h2 id="form-title">Registrar afectación</h2></div><p class="muted">Completa los datos y selecciona un punto en el mapa.</p>
+<form id="formulario">
+<label for="clase">¿Qué deseas registrar?</label><select id="clase"><option value="AFECTACION">Afectación geográfica</option><option value="EVALUACION">Evaluación de daños</option></select>
+<div id="campos-evaluacion" hidden>
+<label for="evento-id">Desastre asociado</label><select id="evento-id"><option value="">Evaluación preliminar · sin desastre</option></select><button type="button" id="actualizar-desastres" class="secondary">Actualizar desastres</button><p id="estado-desastres" class="hint" role="status"></p>
+<label for="nivel">Nivel de daño</label><select id="nivel"><option value="1">1 · Sin daño</option><option value="2">2 · Leve</option><option value="3">3 · Moderado</option><option value="4">4 · Grave</option><option value="5">5 · Destrucción total</option></select>
+<label for="activo">Activo evaluado</label><input id="activo" maxlength="120" placeholder="Ej. Escuela del barrio">
+<p class="hint">El evaluador y el organismo se registran automáticamente desde tu sesión.</p>
+
+<p class="hint">Selecciona un desastre registrado o conserva la evaluación como preliminar para vincularla después. El nivel de daño es independiente de la severidad del desastre.</p>
+</div><div id="campos-afectacion">
+<label for="titulo">Nombre de la afectación</label><input id="titulo" name="titulo" required minlength="3" maxlength="120" placeholder="Ej. Desbordamiento del río">
+<div class="two"><div><label for="tipo">Tipo</label><select id="tipo" name="tipo" required></select></div><div><label for="severidad">Severidad</label><select id="severidad" name="severidad" required></select></div></div>
+</div><label for="descripcion">Descripción <span class="optional">opcional</span></label><textarea id="descripcion" name="descripcion" rows="3" maxlength="2000" placeholder="¿Qué ocurrió en este lugar?"></textarea>
+<div class="location-heading"><h3>Ubicación</h3><span>WGS 84 · grados decimales</span></div>
+<div class="two"><div><label for="latitud">Latitud</label><input id="latitud" name="latitud" type="number" required min="-90" max="90" step="any" placeholder="4.609710"></div><div><label for="longitud">Longitud</label><input id="longitud" name="longitud" type="number" required min="-180" max="180" step="any" placeholder="-74.081750"></div></div>
+<p class="hint">↗ Haz clic en el mapa para completar las coordenadas. También puedes escribirlas.</p>
+<button id="guardar" type="submit" class="primary full">+ Registrar afectación</button><button type="button" id="cancelar" class="secondary full" hidden>Cancelar edición</button>
+</form><div class="scope-note"><span class="dot"></span> Registro académico. Los datos ingresados no se verifican como alertas oficiales.</div></aside>
+<section class="panel map-panel" aria-label="Mapa y filtros"><div class="map-toolbar"><div><span class="eyebrow">VISTA TERRITORIAL</span><h2>Mapa de afectaciones</h2></div><button id="encuadrar" class="secondary">Ver todos los puntos</button></div>
+<div class="filters"><label for="filtro-clase" class="sr-only">Clase de registro</label><select id="filtro-clase"><option value="">Todos los registros</option><option value="AFECTACION">Afectaciones</option><option value="EVALUACION">Evaluaciones</option></select><label for="filtro-tipo" class="sr-only">Filtrar por tipo</label><select id="filtro-tipo"><option value="">Todos los tipos</option></select><label for="filtro-severidad" class="sr-only">Filtrar por severidad</label><select id="filtro-severidad"><option value="">Todas las severidades</option></select><input id="filtro-evento" aria-label="Referencia de desastre" maxlength="100" placeholder="Referencia del desastre"><select id="filtro-nivel" aria-label="Nivel de daño"><option value="">Todos los niveles</option><option value="1">Daño 1</option><option value="2">Daño 2</option><option value="3">Daño 3</option><option value="4">Daño 4</option><option value="5">Daño 5</option></select><span id="conteo">— puntos</span></div>
+<div id="mapa" aria-label="Mapa interactivo; selecciona un punto o escribe coordenadas en el formulario"></div><div class="map-footer"><span><i class="legend baja"></i>Baja</span><span><i class="legend media"></i>Media</span><span><i class="legend alta"></i>Alta</span><span><i class="legend critica"></i>Crítica</span><span>● Evaluación: daño 1–5</span><span id="mapa-estado" class="map-credit" role="status">Datos propios · Mapa base OpenStreetMap</span></div></section>
+</section>
+<section class="panel records"><div class="records-heading"><div><p class="eyebrow">REGISTRO DE CAMPO</p><h2>Registros del territorio</h2></div><button id="actualizar" class="secondary">↻ Actualizar</button></div><div class="table-wrap"><table><thead><tr><th>Afectación</th><th>Clase / referencia</th><th>Severidad / daño</th><th>Coordenadas</th><th>Acciones</th></tr></thead><tbody id="registros"></tbody></table></div><p id="vacio" class="empty" hidden>Aún no hay puntos para estos filtros. Registra una afectación o importa un GeoJSON.</p></section>
+<dialog id="detalle"><h2>Evaluación de daños</h2><div id="detalle-contenido"></div><form method="dialog"><button class="secondary">Cerrar</button></form></dialog>
+</main><footer>TERRITORIO <span>Presentación → API REST .NET → PostgreSQL</span></footer>
+</body></html>

@@ -1,0 +1,61 @@
+OK: login coordinador_demo
+OK: solicitudes requieren sesión
+OK: crear rol EVALUADOR
+OK: login sol_evaluador_a52fb4e51c
+OK: crear rol CONSULTA
+OK: login sol_consulta_a52fb4e51c
+OK: desastre en autoridad única
+OK: rechazar datos inválidos {'cantidad': 0}
+OK: rechazar datos inválidos {'cantidad': -1}
+OK: rechazar datos inválidos {'cantidad': None}
+OK: rechazar datos inválidos {'tipoRecurso': '  '}
+OK: rechazar datos inválidos {'tipoRecurso': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
+OK: rechazar datos inválidos {'prioridad': None}
+OK: rechazar datos inválidos {'prioridad': 'CRITICA'}
+OK: rechazar datos inválidos {'solicitudId': None}
+OK: rechazar datos inválidos {'eventoId': None}
+OK: consulta no registra solicitudes
+OK: no inventa desastres para registrar
+OK: evaluador registra solicitud
+OK: estado y desastre provienen del negocio
+OK: organismo procede de sesión
+OK: diez reintentos de registro no duplican
+OK: misma solicitudId con otros datos produce conflicto
+OK: una auditoría de registro
+OK: lectura autorizada /solicitudes
+OK: lectura autorizada /solicitudes/pendientes
+OK: lectura autorizada /solicitudes?eventoId=SOLICITUDES-a52fb4e51c
+OK: ID inválido 0
+OK: ID inválido -1
+OK: ID inválido abc
+OK: ID inválido 99999999999999999999999999999999999999
+OK: ID inexistente devuelve 404
+OK: evaluador no atiende solicitudes
+OK: consulta no atiende solicitudes
+OK: una sola atención gana la carrera concurrente
+OK: atención conserva datos y responsable
+OK: atención repetida devuelve conflicto
+OK: atendida desaparece de pendientes
+OK: historial completo sin duplicados
+OK: login sol_otro_a52fb4e51c
+OK: aislamiento entre organismos GET /solicitudes/1
+OK: aislamiento entre organismos GET /solicitudes/1/historial
+OK: aislamiento entre organismos PATCH /solicitudes/1/atender
+OK: aislamiento entre organismos POST /solicitudes
+OK: lista ajena vacía
+OK: fallo sintético de auditoría comunicado
+OK: JTA revierte solicitud si falla auditoría
+OK: nueva solicitud pendiente
+ Container arqui-integracion-nucleo-1 Restarting 
+ Container arqui-integracion-api-1 Restarting 
+ Container arqui-integracion-api-1 Started 
+ Container arqui-integracion-nucleo-1 Started 
+OK: atención persiste tras reinicio
+OK: pendiente persiste tras reinicio
+OK: historial persiste tras reinicio
+OK: mapas anteriores siguen disponibles
+OK: sesión revocada no accede a solicitudes
+OK: sesión revocada no accede a solicitudes
+OK: sesión revocada no accede a solicitudes
+OK: sesión revocada no accede a solicitudes
+{"resultado": "APROBADO", "solicitudAtendida": 1, "solicitudPendiente": 14, "desastre": "SOLICITUDES-a52fb4e51c"}

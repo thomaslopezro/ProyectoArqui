@@ -1,0 +1,22 @@
+test_01_salud_catalogos (__main__.ApiTests) ... ok
+test_02_crud_filtros_version (__main__.ApiTests) ... ok
+test_03_validacion_limites_y_ausencias (__main__.ApiTests) ... ok
+test_04_geojson_orden_y_atomicidad (__main__.ApiTests) ... ok
+test_05_geojson_malformado (__main__.ApiTests) ... ok
+test_06_actualizacion_concurrente (__main__.ApiTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.266s
+
+OK
+test_01_campo_en_panorama_calor_geojson_y_detalle (__main__.IntegracionTests) ... ok
+test_02_afectacion_original_y_filtros (__main__.IntegracionTests) ... ok
+test_03_preliminar_y_foto (__main__.IntegracionTests) ... ok
+test_04_importacion_no_pierde_evaluaciones (__main__.IntegracionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 6.747s
+
+OK
+OK modo diferido: lote mixto, foto, conflictos, reintento y consulta.
+Observación local: acuse 10 ms, consulta completa 2063 ms.

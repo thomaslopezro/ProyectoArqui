@@ -1,0 +1,157 @@
+ Image arqui-integracion-nucleo Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 680B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.34kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21
+#3 DONE 0.0s
+
+#4 [internal] load metadata for quay.io/wildfly/wildfly:41.0.1.Final-jdk21
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 73B done
+#5 DONE 0.0s
+
+#6 [build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320
+#6 resolve docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320 done
+#6 DONE 0.0s
+
+#7 [stage-1 1/6] FROM quay.io/wildfly/wildfly:41.0.1.Final-jdk21@sha256:a3857756e5c8bd666aa1cdbee4a92b8aa6c79dc912b764361ec6c1a7a22c6a24
+#7 resolve quay.io/wildfly/wildfly:41.0.1.Final-jdk21@sha256:a3857756e5c8bd666aa1cdbee4a92b8aa6c79dc912b764361ec6c1a7a22c6a24 done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 13.56kB done
+#8 DONE 0.0s
+
+#9 [build 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 3/6] COPY pom.xml .
+#10 CACHED
+
+#11 [build 4/6] COPY src ./src
+#11 DONE 0.0s
+
+#12 [build 5/6] RUN --mount=type=cache,target=/root/.m2 mvn -B clean verify
+#12 0.417 [INFO] Scanning for projects...
+#12 0.436 [INFO] 
+#12 0.436 [INFO] -------------------< com.pgdr:plataforma-desastres >--------------------
+#12 0.436 [INFO] Building plataforma-desastres 0.2.0-SNAPSHOT
+#12 0.436 [INFO]   from pom.xml
+#12 0.436 [INFO] --------------------------------[ war ]---------------------------------
+#12 0.519 [INFO] 
+#12 0.519 [INFO] --- clean:3.2.0:clean (default-clean) @ plataforma-desastres ---
+#12 0.538 [INFO] 
+#12 0.538 [INFO] --- resources:3.4.0:resources (default-resources) @ plataforma-desastres ---
+#12 0.571 [INFO] Copying 1 resource from src/main/resources to target/classes
+#12 0.573 [INFO] 
+#12 0.573 [INFO] --- compiler:3.13.0:compile (default-compile) @ plataforma-desastres ---
+#12 0.614 [INFO] Recompiling the module because of changed source code.
+#12 0.616 [INFO] Compiling 50 source files with javac [debug release 21] to target/classes
+#12 0.986 [INFO] 
+#12 0.986 [INFO] --- resources:3.4.0:testResources (default-testResources) @ plataforma-desastres ---
+#12 0.988 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#12 0.988 [INFO] 
+#12 0.988 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ plataforma-desastres ---
+#12 0.991 [INFO] Recompiling the module because of changed dependency.
+#12 0.991 [INFO] Compiling 8 source files with javac [debug release 21] to target/test-classes
+#12 1.079 [INFO] 
+#12 1.079 [INFO] --- surefire:3.5.4:test (default-test) @ plataforma-desastres ---
+#12 1.116 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#12 1.127 [INFO] 
+#12 1.127 [INFO] -------------------------------------------------------
+#12 1.127 [INFO]  T E S T S
+#12 1.127 [INFO] -------------------------------------------------------
+#12 1.295 [INFO] Running co.edu.javeriana.emergencias.RepositorioSolicitudMemoriaTest
+#12 1.315 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in co.edu.javeriana.emergencias.RepositorioSolicitudMemoriaTest
+#12 1.315 [INFO] Running co.edu.javeriana.emergencias.AtencionSolicitudTest
+#12 1.401 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+#12 1.497 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#12 1.500 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.5/byte-buddy-agent-1.17.5.jar)
+#12 1.500 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#12 1.500 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#12 1.500 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#12 1.637 [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.326 s -- in co.edu.javeriana.emergencias.AtencionSolicitudTest
+#12 1.637 [INFO] Running co.edu.javeriana.emergencias.SolicitudServicioTest
+#12 1.650 [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in co.edu.javeriana.emergencias.SolicitudServicioTest
+#12 1.650 [INFO] Running com.pgdr.application.HuellasTest
+#12 1.660 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.pgdr.application.HuellasTest
+#12 1.660 [INFO] Running com.pgdr.application.IdentidadTest
+#12 1.661 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.pgdr.application.IdentidadTest
+#12 1.661 [INFO] Running com.pgdr.application.DesastreServiceTest
+#12 1.663 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.pgdr.application.DesastreServiceTest
+#12 1.663 [INFO] Running com.pgdr.application.CriptografiaTest
+#12 1.923 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s -- in com.pgdr.application.CriptografiaTest
+#12 1.932 [INFO] 
+#12 1.932 [INFO] Results:
+#12 1.932 [INFO] 
+#12 1.932 [INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0
+#12 1.932 [INFO] 
+#12 1.934 [INFO] 
+#12 1.934 [INFO] --- war:3.4.0:war (default-war) @ plataforma-desastres ---
+#12 2.004 [INFO] Packaging webapp
+#12 2.005 [INFO] Assembling webapp [plataforma-desastres] in [/app/target/plataforma-desastres]
+#12 2.006 [INFO] Processing war project
+#12 2.007 [INFO] Copying webapp resources [/app/src/main/webapp]
+#12 2.026 [INFO] Building war: /app/target/plataforma-desastres.war
+#12 2.044 [INFO] ------------------------------------------------------------------------
+#12 2.044 [INFO] BUILD SUCCESS
+#12 2.044 [INFO] ------------------------------------------------------------------------
+#12 2.045 [INFO] Total time:  1.634 s
+#12 2.045 [INFO] Finished at: 2026-11-10T00:27:11Z
+#12 2.045 [INFO] ------------------------------------------------------------------------
+#12 DONE 2.1s
+
+#13 [build 6/6] RUN --mount=type=cache,target=/root/.m2 mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.7.1:copy     -Dartifact=org.postgresql:postgresql:42.7.8     -DoutputDirectory=/tmp/driver     -Dmdep.stripVersion=true
+#13 0.417 [INFO] Scanning for projects...
+#13 0.457 [INFO] 
+#13 0.457 [INFO] -------------------< com.pgdr:plataforma-desastres >--------------------
+#13 0.457 [INFO] Building plataforma-desastres 0.2.0-SNAPSHOT
+#13 0.457 [INFO]   from pom.xml
+#13 0.457 [INFO] --------------------------------[ war ]---------------------------------
+#13 0.458 [INFO] 
+#13 0.458 [INFO] --- dependency:3.7.1:copy (default-cli) @ plataforma-desastres ---
+#13 0.650 [INFO] Configured Artifact: org.postgresql:postgresql:42.7.8:jar
+#13 0.653 [INFO] Copying artifact 'org.postgresql:postgresql:jar:42.7.8' (/root/.m2/repository/org/postgresql/postgresql/42.7.8/postgresql-42.7.8.jar) to /tmp/driver/postgresql.jar
+#13 0.654 [INFO] ------------------------------------------------------------------------
+#13 0.654 [INFO] BUILD SUCCESS
+#13 0.654 [INFO] ------------------------------------------------------------------------
+#13 0.655 [INFO] Total time:  0.244 s
+#13 0.655 [INFO] Finished at: 2026-11-10T00:27:12Z
+#13 0.655 [INFO] ------------------------------------------------------------------------
+#13 DONE 0.7s
+
+#14 [stage-1 2/6] COPY --chown=jboss:0 --from=build     /tmp/driver/postgresql.jar     /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main/postgresql.jar
+#14 CACHED
+
+#15 [stage-1 3/6] COPY --chown=jboss:0     docker/postgresql/module.xml     /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main/module.xml
+#15 CACHED
+
+#16 [stage-1 4/6] COPY --chown=jboss:0     docker/wildfly/configure-datasource.cli     /tmp/configure-datasource.cli
+#16 CACHED
+
+#17 [stage-1 5/6] RUN /opt/jboss/wildfly/bin/jboss-cli.sh     --file=/tmp/configure-datasource.cli
+#17 CACHED
+
+#18 [stage-1 6/6] COPY --chown=jboss:0 --from=build     /app/target/plataforma-desastres.war     /opt/jboss/wildfly/standalone/deployments/plataforma-desastres.war
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers 0.0s done
+#19 exporting manifest sha256:c28f0e291075a9c4ae8a7f0fcf703d6707dd3af7accc27c48bbe19721f86c279 done
+#19 exporting config sha256:7de600c875bb783d8be06518e8f83854faa5fec01db6d546a7bdee446be7da65 done
+#19 exporting attestation manifest sha256:8b5c6092b20b858628c7cebab6e7912fef7af415cc5eb49b19e3cde87278b19f done
+#19 exporting manifest list sha256:65e3138a3c73784bf0576781343f77dc8d329789b0dc042a1fcb78f18a57020a done
+#19 naming to docker.io/library/arqui-integracion-nucleo:latest done
+#19 unpacking to docker.io/library/arqui-integracion-nucleo:latest done
+#19 DONE 0.1s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ Image arqui-integracion-nucleo Built 

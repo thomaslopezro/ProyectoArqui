@@ -1,0 +1,242 @@
+[
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/AfectacionRequest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "0a6184beb0812aec26811a6dfe101adacf3778e4a231bdcf8b4188f98a71ec69"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/AfectacionResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "49c1a7b60100f539226e420352ae2e27dabb8cee11459aff6fe55f71ce65aa58"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/AuthResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "45b242f2dd2713c930fc5704cc5c471c2d670ce45b25c25357220c0c99dd9753"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/CrearDesastreRequest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "8840d75c6c95c0d80e88c90ccaecc0f9339197131e443d74f0f2d7995077a302"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/DesastreResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "91b6fb2efe923894106bf795b581d7097186f5f2f47dda5124bb271cde1bf7a6"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/HealthResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "6d69fad9943ff7fb5a991e367fcbec5b0d60d504461f01ebb9458e39e8dfa203"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/IntegracionResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "8f022b3a95b5b62e7df70ad522cd4a139bed7eb8edd9dbb41412d4d59bfca7ed"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/LoginRequest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "33a2188d665d574859a29c22acea273ce52b0689b106f387297a17a15a792634"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/MapaResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "3479868efef1a05c6ce9a375730c301598ed25dd46509a4f7f72b422ecb8b0bb"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/NuevoUsuarioRequest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "024e9d0a7bbdd551b50a89ff944b1ac76df24e36070dfdcc726bdac2c4e4aef6"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/RestApplication.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "84ea1a2eee27ee2023d379c09a1a7b04c3c09faec73632149e6f3810f001dd71"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/SyncRequest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "4077f3fcef90732785a98a5453971d0189bec1a5017dbbde9c994bb725815ed3"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/SyncResource.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "ce8d739c8fac9f73cbd16590d23f52f79be8c6869907cb4ab9e61cbdae5fa940"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/api/TokenAuthFilter.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "6b2625f28619005cc1cca7545e38e999dfb5cfb4187527cda1ce742dd1646cea"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/AfectacionService.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "59aa7d3e38e493bf3592a187ff49440c0502411c48fdfa5868d6cf958502b5ec"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/AuthService.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "b0a374043194726d11ae00d034fc3239acbfec923155e7ddd3176387da82bb14"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/BootstrapUsuarios.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "adbc9e2f9fe32931ecbf0f1399ce40fdb23284da4a76f72a7fb123b00b99fe01"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/Criptografia.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "dee2d607280e8e6bf32b048d40f22f2a8dd897e73960bf5014c26b73893fd209"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/DesastreService.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "a85095d67a3b576b9801772119ceaa2aeb50d4e15b5b4d27318e436c0931de54"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/Huellas.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "c7b8fea344fa71a8b1700e366ece9d2abd67313a644434c9be20a08e2561e4cc"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/Identidad.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "61e17f9c1e9c4f64a8845bd4b1413fded9e8e0541a0ceecc33adb2dc038c0a12"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/PublicadorOutbox.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "9b8fe55dd9aa09c9140cc921e93e235358873458d46122340929caafa7b73b2f"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/RegistroIntegrado.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "63544b3cdcae002278b0b53137cb4b975fba8b8b0286b77d0cb03012b3e3fe55"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/application/ValidacionException.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "2df01295e0796a65070452353a76838c2cbb7f7d09b578377760576aadfea831"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/Afectacion.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "b23fa33116b93ba15dc34920958d6d583ae092286ccbd5c81dcfedf4aa87a29c"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/AuditoriaDesastre.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "3219cd55d14114fac0f21161e03d7c32f2745de9ffe673dd8a99ba97ff591660"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/Desastre.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "10ef9d3d1fb916828e6f48cccdb2bc58fbf4cdedf83d8319ac73ae7cfba5071a"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/EventoOutbox.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "b5db47fb3d8497542e3732a904e58d2a3175b394899f39f99581ee3a30d88985"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/Organizacion.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "057b63287f5bbc9a71c8bd9a1bc3910cf573363fdd24c0c4d884da0ea61ddba6"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/Sesion.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "22ee6da1061fb0b4fdb72fade6a5baee0e0a8accdfb5330f8f5077cbae6a1cca"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/domain/Usuario.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "829fcbb19a4d2ad53147fbc52d83fe825eb05fff338a5b1ff96e11e79faf8da8"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/infrastructure/AfectacionRepository.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "c3cd90cd79ba948a9f46794be5f250583f8b22c40aabb97d74b7f56487d59329"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/infrastructure/AuditoriaRepository.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "406a207fb62fe5f4ce9b2232c23526706a1f846c9d508544c08fea426a06587d"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/infrastructure/DesastreRepository.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "f1c75a0679b72b312e5bcca8a63685e27cb27e89b22e29ef88ee67502620adf5"
+  },
+  {
+    "archivo": "nucleo/src/main/java/com/pgdr/infrastructure/OutboxRepository.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "95905b88f67782132130f429176f05e403abacf1ab91042d91eb36a5288655fb"
+  },
+  {
+    "archivo": "nucleo/src/main/resources/META-INF/persistence.xml",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "d35f29e86027392d1dfe7681b694b627e687c97af1e1b5f3c19056f9d50fa23f"
+  },
+  {
+    "archivo": "nucleo/src/test/java/com/pgdr/application/CriptografiaTest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "6f78bccc6f03345b662aa3bdfadf01bd49730dcf779c153a18a20353eeb79c42"
+  },
+  {
+    "archivo": "nucleo/src/test/java/com/pgdr/application/DesastreServiceTest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "6d4b73be6c8e7a2ab8df7e034dec0a72b9e52178fb4644539040c53f9384cee8"
+  },
+  {
+    "archivo": "nucleo/src/test/java/com/pgdr/application/HuellasTest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": false,
+    "sha256": "93eb4aa0bcf5ea90c7086e7733dc799ca5239e0289c50386457023f9ebc6f50a"
+  },
+  {
+    "archivo": "nucleo/src/test/java/com/pgdr/application/IdentidadTest.java",
+    "origen": "PROYECTO ARQUI/backend",
+    "conservadoSinCambios": true,
+    "sha256": "e1b0b11d1e872c236c56b9a0ab6f2a183c1160ed7525c800786905bec2a3b9c8"
+  }
+]

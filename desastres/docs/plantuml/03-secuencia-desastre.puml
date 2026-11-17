@@ -1,0 +1,79 @@
+@startuml
+!theme plain
+skinparam shadowing false
+hide footbox
+title Taller 3 — Recepción, registro y notificaciones
+
+actor "Productor AMQP" as P
+queue "RabbitMQ" as R
+participant "ProcesadorMensajes\nTemporizador EJB" as T
+participant "DesastreServicio" as S
+database "RepositorioArchivo\nestado.json" as F
+participant "CorreoSmtp" as C
+participant "Mailpit" as M
+actor "Sistema registrado" as X
+
+P -> R : Publicar desastre.reportado\nJSON, ID estable, delivery_mode=2
+R --> P : Publisher confirm
+note over P,R
+El productor puede finalizar sin esperar
+al registro ni a los destinatarios.
+end note
+
+loop Ciclo del temporizador (cada segundo)
+  T -> R : basicGet(desastres.registro, autoAck=false)\na través de RabbitMensajes
+  R --> T : Entrega de un mensaje, si hay disponible
+  opt Hay mensaje válido
+    T -> T : Deserializar y validar
+    T -> S : registrar(desastre)
+    S -> F : registrar si el ID es nuevo
+    alt ID nuevo
+      F -> F : Guardar juntos desastre, destinatarios\ny salida pendiente (reemplazo atómico)
+      F --> S : Registrado
+    else Reentrega del mismo ID
+      F --> S : Ya registrado; no crear otra salida
+    end
+    S --> T : Registro completado
+    T -> R : ACK de entrada
+  end
+
+  T -> S : despacharPendientes()
+  S -> F : Consultar salidas pendientes
+  F --> S : Registros pendientes
+  loop Por cada registro pendiente
+    S -> R : Publicar por RabbitMensajes:\nuna copia en sistema.<id> por destinatario\ny un mensaje en desastres.correo
+    R --> S : Publisher confirms
+    S -> F : Confirmar publicación
+  end
+
+  T -> R : basicGet(desastres.correo, autoAck=false)\na través de RabbitMensajes
+  R --> T : Entrega de un mensaje, si hay disponible
+  opt Hay mensaje de correo válido
+    T -> S : enviarCorreos(id)
+    S -> F : Consultar destinatarios y correos confirmados
+    F --> S : Registro
+    loop Por destinatario todavía no confirmado
+      S -> C : enviar(desastre, sistema)
+      C -> M : Enviar mensaje SMTP
+      M --> C : Aceptación SMTP
+      C --> S : Envío confirmado
+      S -> F : Persistir confirmación del destinatario
+    end
+    S --> T : Correos procesados
+    T -> R : ACK de correo
+  end
+end
+
+== Consumo independiente por cada sistema ==
+X -> R : Suscribirse a sistema.<id>
+R ->> X : Notificación del desastre
+X -> X : Procesar; deduplicar por ID si corresponde
+X -> R : ACK después de procesar
+
+note over R,F
+Entrega al menos una vez.
+Un fallo entre publicar y marcar la salida puede duplicar una notificación.
+SMTP puede duplicar un correo si el proceso cae antes de guardar su confirmación.
+Los mensajes inválidos y fallos se gestionan según el diagrama de mensajería.
+end note
+@enduml

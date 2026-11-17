@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+package pgdr.reconstruccion.v1;
+
+option java_multiple_files = true;
+option java_package = "com.pgdr.reconstruccion.grpc";
+option java_outer_classname = "ReconstruccionProto";
+
+// Contrato gRPC del módulo de Reconstrucción: una operación por caso de uso (CU-01 a CU-09).
+// Los valores de dinero viajan como texto decimal ("1500000.00") y las fechas como AAAA-MM-DD.
+service ReconstruccionService {
+  rpc IniciarReconstruccion (DesastreRequest) returns (DesastreMsg);              // CU-01
+  rpc CrearProyecto (CrearProyectoRequest) returns (ProyectoMsg);                 // CU-02
+  rpc CrearProyectosEnLote (CrearLoteRequest) returns (CrearLoteResponse);        // CU-02
+  rpc AprobarProyecto (AprobarProyectoRequest) returns (ProyectoMsg);             // CU-03
+  rpc IniciarEjecucion (IniciarEjecucionRequest) returns (ProyectoMsg);           // CU-04
+  rpc RegistrarAvance (RegistrarAvanceRequest) returns (ProyectoMsg);             // CU-05
+  rpc RegistrarCosto (RegistrarCostoRequest) returns (ProyectoMsg);               // CU-05
+  rpc AdjuntarEvidencia (AdjuntarEvidenciaRequest) returns (ProyectoMsg);         // CU-05
+  rpc ModificarPresupuesto (ModificarPresupuestoRequest) returns (ProyectoMsg);   // CU-06
+  rpc CambiarEstado (CambiarEstadoRequest) returns (ProyectoMsg);                 // CU-07
+  rpc ConsultarSeguimiento (DesastreRequest) returns (SeguimientoResponse);       // CU-08
+  rpc ConsultarAuditoria (ConsultarAuditoriaRequest) returns (AuditoriaResponse); // CU-08
+  rpc CerrarDesastre (DesastreRequest) returns (DesastreMsg);                     // CU-09
+}
+
+// Quién ejecuta la operación. rol: AUTORIDAD, RESPONSABLE o AUDITOR.
+message Identidad {
+  string usuario = 1;
+  string rol = 2;
+  string organizacion = 3;
+}
+
+message DesastreRequest {
+  Identidad identidad = 1;
+  string desastre_id = 2;
+}
+
+message DesastreMsg {
+  string id = 1;
+  string nombre = 2;
+  string estado = 3;
+}
+
+message NuevoProyecto {
+  string nombre = 1;
+  string tipo = 2;                    // REPARACION, RECONSTRUCCION o vacío para deducirlo
+  repeated string evaluaciones = 3;
+}
+
+message CrearProyectoRequest {
+  Identidad identidad = 1;
+  string desastre_id = 2;
+  NuevoProyecto proyecto = 3;
+}
+
+message CrearLoteRequest {
+  Identidad identidad = 1;
+  string desastre_id = 2;
+  repeated NuevoProyecto proyectos = 3;
+}
+
+message ResultadoLote {
+  int32 indice = 1;
+  string nombre = 2;
+  bool creado = 3;
+  string proyecto_id = 4;
+  string regla = 5;
+  string error = 6;
+}
+
+message CrearLoteResponse {
+  repeated ResultadoLote resultados = 1;
+}
+
+message AprobarProyectoRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string presupuesto = 3;
+  string fuente_financiacion = 4;
+  string responsable = 5;
+}
+
+message IniciarEjecucionRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string contratista = 3;
+  string inicio = 4;
+  string fin = 5;
+}
+
+message RegistrarAvanceRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  int32 porcentaje = 3;
+  string descripcion = 4;
+  string motivo_correccion = 5;
+}
+
+message RegistrarCostoRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string valor = 3;
+  string descripcion = 4;
+}
+
+message AdjuntarEvidenciaRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string descripcion = 3;
+}
+
+message ModificarPresupuestoRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string presupuesto = 3;
+  string motivo = 4;
+}
+
+message CambiarEstadoRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string estado = 3;                  // SUSPENDIDO, EN_EJECUCION, FINALIZADO o CANCELADO
+  string motivo = 4;
+}
+
+message SeguimientoMsg {
+  string tipo = 1;                    // AVANCE, COSTO o EVIDENCIA
+  string valor = 2;
+  string descripcion = 3;
+  string momento = 4;
+  string usuario = 5;
+}
+
+message ProyectoMsg {
+  string id = 1;
+  string desastre_id = 2;
+  string organizacion = 3;
+  string nombre = 4;
+  string tipo = 5;
+  string estado = 6;
+  string presupuesto = 7;
+  string fuente_financiacion = 8;
+  string responsable = 9;
+  string contratista = 10;
+  string inicio_plan = 11;
+  string fin_plan = 12;
+  int32 avance = 13;
+  string costo_acumulado = 14;
+  bool sobrecosto = 15;
+  repeated string evaluaciones = 16;
+  repeated SeguimientoMsg seguimiento = 17;
+  int64 version = 18;
+}
+
+message SeguimientoResponse {
+  DesastreMsg desastre = 1;
+  repeated ProyectoMsg proyectos = 2;
+  map<string, int32> por_estado = 3;
+  string presupuesto_total = 4;
+  string costo_total = 5;
+  int32 avance_promedio = 6;
+  int32 con_sobrecosto = 7;
+}
+
+// Indique proyecto_id para la traza de un proyecto o desastre_id para la de todo el desastre.
+message ConsultarAuditoriaRequest {
+  Identidad identidad = 1;
+  string proyecto_id = 2;
+  string desastre_id = 3;
+}
+
+message AuditoriaMsg {
+  string momento = 1;
+  string usuario = 2;
+  string rol = 3;
+  string organizacion = 4;
+  string operacion = 5;
+  string entidad = 6;
+  string entidad_id = 7;
+  string valor_anterior = 8;
+  string valor_nuevo = 9;
+  string motivo = 10;
+  string resultado = 11;
+  string detalle = 12;
+}
+
+message AuditoriaResponse {
+  repeated AuditoriaMsg registros = 1;
+}

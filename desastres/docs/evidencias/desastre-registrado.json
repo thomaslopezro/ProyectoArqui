@@ -1,0 +1,40 @@
+{
+  "correosEnviados": [
+    "bomberos-bc97048bbe",
+    "defensa-bc97048bbe",
+    "bomberos-84655d7ef1",
+    "defensa-84655d7ef1"
+  ],
+  "desastre": {
+    "descripcion": "Desbordamiento reportado por el productor de prueba",
+    "fecha": "2026-10-21T16:42:32.323712Z",
+    "id": "broker-84655d7ef1",
+    "severidad": "ALTA",
+    "tipo": "INUNDACION",
+    "ubicacion": "Bogota - zona de demostracion"
+  },
+  "destinatarios": [
+    {
+      "correo": "bomberos-bc97048bbe@example.test",
+      "id": "bomberos-bc97048bbe",
+      "nombre": "bomberos"
+    },
+    {
+      "correo": "defensa-bc97048bbe@example.test",
+      "id": "defensa-bc97048bbe",
+      "nombre": "defensa"
+    },
+    {
+      "correo": "bomberos-84655d7ef1@example.test",
+      "id": "bomberos-84655d7ef1",
+      "nombre": "bomberos"
+    },
+    {
+      "correo": "defensa-84655d7ef1@example.test",
+      "id": "defensa-84655d7ef1",
+      "nombre": "defensa"
+    }
+  ],
+  "notificacionPublicada": true,
+  "registradoEn": "2026-10-21T16:42:32.611210670Z"
+}

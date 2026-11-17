@@ -1,0 +1,154 @@
+name: arqui-integracion
+services:
+  web:
+    image: nginx:1.28-alpine
+    ports: ["127.0.0.1:18085:80"]
+    volumes:
+      - ./web:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on: [api, reconstruccion, reconstruccion-web]
+  api:
+    build: .
+    environment:
+      Desastres__Url: http://desastres:8080/gestion-emergencias/api/
+      Nucleo__Url: http://nucleo:8080/plataforma-desastres/api/
+      Integracion__Key: ${INTEGRACION_KEY:-arqui-interna-local-cambiar}
+      Campo__Diferida: "${CAMPO_DIFERIDA:-false}"
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__Mapas: Host=db;Database=mapas;Username=mapas;Password=mapas-local
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: mapas
+      POSTGRES_USER: mapas
+      POSTGRES_PASSWORD: mapas-local
+    volumes: ["mapas-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mapas -d mapas"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  rabbitmq:
+    image: rabbitmq:4.1-management
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: taller
+      RABBITMQ_DEFAULT_PASS: taller-local
+    ports: ["127.0.0.1:15683:5672", "127.0.0.1:15684:15672"]
+    volumes: ["mensajes:/var/lib/rabbitmq"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  mailpit:
+    image: axllent/mailpit:v1.27.4
+    environment:
+      MP_DATABASE: /data/mailpit.db
+    ports: ["127.0.0.1:18026:8025"]
+    volumes: ["correos:/data"]
+  desastres:
+    build: ../desastres
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: taller
+      RABBIT_PASSWORD: taller-local
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      INTEGRACION_KEY: ${INTEGRACION_KEY:-arqui-interna-local-cambiar}
+      REGISTRO_ARCHIVO: /opt/payara/registro/estado.json
+    volumes: ["registro-desastres:/opt/payara/registro"]
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+  prueba-rpc:
+    profiles: [pruebas]
+    build: ../interop
+    environment:
+      EJB_USUARIO: ${EJB_USUARIO:-ejbcliente}
+      EJB_CLAVE: ${EJB_CLAVE:-Arqui-Rpc-Local-2026!}
+      PGDR_BOOTSTRAP_USER: ${PGDR_BOOTSTRAP_USER:-coordinador_demo}
+      PGDR_BOOTSTRAP_PASSWORD: ${PGDR_BOOTSTRAP_PASSWORD:-Arqui-Local-2026!}
+  nucleo:
+    build:
+      context: ../nucleo
+      args:
+        EJB_USUARIO: ${EJB_USUARIO:-ejbcliente}
+        EJB_CLAVE: ${EJB_CLAVE:-Arqui-Rpc-Local-2026!}
+    ports: ["127.0.0.1:18092:8080"]
+    environment:
+      PGDR_DB_PASSWORD: ${PGDR_DB_PASSWORD:-nucleo-local-cambiar}
+      PGDR_BOOTSTRAP_USER: ${PGDR_BOOTSTRAP_USER:-coordinador_demo}
+      PGDR_BOOTSTRAP_PASSWORD: ${PGDR_BOOTSTRAP_PASSWORD:-Arqui-Local-2026!}
+      INTEGRACION_KEY: ${INTEGRACION_KEY:-arqui-interna-local-cambiar}
+      NOTIFICACIONES_URL: http://desastres:8080/gestion-emergencias/api
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: pgdrdb
+      POSTGRES_USER: pgdr
+      POSTGRES_PASSWORD: ${PGDR_DB_PASSWORD:-nucleo-local-cambiar}
+    volumes:
+      - nucleo-data:/var/lib/postgresql/data
+      - ../nucleo/migraciones:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pgdr -d pgdrdb"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  # UD-06 Reconstrucción (Spring Boot, gRPC, React)
+  reconstruccion:
+    build: ../reconstruccion/backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://reconstruccion-db:5432/reconstruccion
+      SPRING_DATASOURCE_USERNAME: reconstruccion
+      SPRING_DATASOURCE_PASSWORD: reconstruccion-local
+      RECONSTRUCCION_DATOS_DEMO: "false"
+      RECONSTRUCCION_INTEGRACION_HABILITADA: "true"
+      RECONSTRUCCION_NUCLEO_URL: http://nucleo:8080/plataforma-desastres/api
+      RECONSTRUCCION_SERVIDOR_URL: http://api:8080
+      RECONSTRUCCION_INTEGRACION_CLAVE: ${INTEGRACION_KEY:-arqui-interna-local-cambiar}
+      RECONSTRUCCION_MENSAJERIA_HABILITADA: "true"
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_USERNAME: taller
+      SPRING_RABBITMQ_PASSWORD: taller-local
+    ports: ["127.0.0.1:19096:9096"]
+    depends_on:
+      reconstruccion-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+  reconstruccion-db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: reconstruccion
+      POSTGRES_USER: reconstruccion
+      POSTGRES_PASSWORD: reconstruccion-local
+    volumes: ["reconstruccion-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reconstruccion -d reconstruccion"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  reconstruccion-web:
+    build:
+      context: ../reconstruccion/web
+      args:
+        VITE_INTEGRADO: "true"
+        VITE_BASE: /reconstruccion/
+        NGINX_CONF: nginx.integrado.conf
+volumes:
+  reconstruccion-data:
+  nucleo-data:
+  mensajes:
+  correos:
+  registro-desastres:
+  mapas-data:

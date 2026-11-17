@@ -1,0 +1,51 @@
+{
+  "resultado": "OK",
+  "evaluacion": {
+    "id": "c1e63b24-df4c-4b98-8f48-e84e5e42c953",
+    "clase": "EVALUACION",
+    "titulo": "Evaluación de daños",
+    "tipo": null,
+    "severidad": null,
+    "nivelAfectacion": 3,
+    "eventoId": "ruebacamaragps",
+    "descripcion": "prueba foto gps",
+    "latitud": 4.6097,
+    "longitud": -74.08169833333334,
+    "version": null,
+    "registradaEn": "2026-11-08T00:22:56.921922+00:00",
+    "evaluador": null,
+    "organizacion": null,
+    "activo": null,
+    "evidenciaId": "e607cf04-3418-4850-bfcc-9de6a1f206a6"
+  },
+  "detalle": {
+    "evaluacionId": "c1e63b24-df4c-4b98-8f48-e84e5e42c953",
+    "eventoId": "ruebacamaragps",
+    "nivelAfectacion": 3,
+    "latitud": 4.6097,
+    "longitud": -74.08169833333334,
+    "capturadaEnUtc": "2026-11-08T00:20:29.5874378+00:00",
+    "descripcion": "prueba foto gps",
+    "fuenteUbicacion": "DISPOSITIVO",
+    "evidenciaId": "e607cf04-3418-4850-bfcc-9de6a1f206a6",
+    "evaluador": null,
+    "organizacion": null,
+    "activo": null
+  },
+  "fotoBytes": 63927,
+  "tipoFoto": "image/jpeg",
+  "sha256Recibido": "db986a1ce4e1fa1ba59350479fe688d4738ac340bf7c2e76f9da85a3f94775c2",
+  "verificaciones": [
+    "GPS sintético recibido como DISPOSITIVO",
+    "Foto capturada con cámara virtual",
+    "Persistencia offline tras cierre forzado",
+    "Incorporación sin duplicados",
+    "Foto recuperable desde API",
+    "Visible en panorama, calor y GeoJSON"
+  ],
+  "visualizacionWeb": {
+    "cargada": true,
+    "ancho": 1440,
+    "alto": 1920
+  }
+}

@@ -1,0 +1,142 @@
+ Image arqui-integracion-api Building 
+ Image arqui-integracion-desastres Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.28kB done
+#1 DONE 0.0s
+
+#2 [desastres internal] load build definition from Dockerfile
+#2 transferring dockerfile: 438B done
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 447B done
+#3 DONE 0.0s
+
+#4 [desastres internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-17
+#4 DONE 0.1s
+
+#5 [api internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#5 DONE 0.1s
+
+#6 [desastres internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#6 ...
+
+#7 [api internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#7 DONE 0.9s
+
+#8 [api internal] load .dockerignore
+#8 transferring context: 72B done
+#8 DONE 0.0s
+
+#9 [api stage-1 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c
+#9 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c 0.0s done
+#9 DONE 0.0s
+
+#10 [api build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e
+#10 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e 0.0s done
+#10 DONE 0.0s
+
+#11 [api internal] load build context
+#11 transferring context: 9.92kB 0.0s done
+#11 DONE 0.0s
+
+#12 [api build 3/6] COPY src/Mapas.Api/Mapas.Api.csproj Mapas.Api/
+#12 CACHED
+
+#13 [api build 2/6] WORKDIR /src
+#13 CACHED
+
+#14 [api build 4/6] RUN dotnet restore Mapas.Api/Mapas.Api.csproj
+#14 CACHED
+
+#15 [api build 5/6] COPY src/Mapas.Api/ Mapas.Api/
+#15 DONE 0.1s
+
+#6 [desastres internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#6 DONE 1.8s
+
+#16 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#16 ...
+
+#17 [desastres internal] load .dockerignore
+#17 transferring context: 75B 0.0s done
+#17 DONE 0.1s
+
+#18 [desastres internal] load build context
+#18 DONE 0.0s
+
+#19 [desastres stage-1 1/3] FROM docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f
+#19 resolve docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f 0.0s done
+#19 DONE 0.0s
+
+#20 [desastres build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584
+#20 resolve docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584 0.0s done
+#20 DONE 0.1s
+
+#18 [desastres internal] load build context
+#18 transferring context: 3.00kB 0.0s done
+#18 DONE 0.0s
+
+#21 [desastres build 3/6] COPY pom.xml .
+#21 CACHED
+
+#22 [desastres build 5/6] COPY src ./src
+#22 CACHED
+
+#23 [desastres stage-1 2/3] RUN mkdir -p /opt/payara/registro && chown payara:payara /opt/payara/registro
+#23 CACHED
+
+#24 [desastres build 6/6] RUN mvn -B clean package
+#24 CACHED
+
+#25 [desastres build 4/6] RUN mvn -B dependency:go-offline
+#25 CACHED
+
+#26 [desastres build 2/6] WORKDIR /app
+#26 CACHED
+
+#27 [desastres stage-1 3/3] COPY --from=build /app/target/gestion-emergencias.war /opt/payara/deployments/gestion-emergencias.war
+#27 CACHED
+
+#28 [desastres] exporting to image
+#28 exporting layers 0.0s done
+#28 exporting manifest sha256:aa0a819ff52bf9ea671fdb76388d94e9a32de83c25f1d728cfe42d58f085c9cb done
+#28 exporting config sha256:81905fc95d9089931fa1a7050b832fd8a861df44005d2453c7e9042415372354 done
+#28 exporting attestation manifest sha256:30706ea89ab94ca5b4c54ebcc10650b4cbfe57505faf3c6dc27cc50babe355ba 0.1s done
+#28 exporting manifest list sha256:b7c13e5f6546d8bf76738d5dffdd5a550c28a064309137ddcf6683aac28d474e
+#28 exporting manifest list sha256:b7c13e5f6546d8bf76738d5dffdd5a550c28a064309137ddcf6683aac28d474e 0.1s done
+#28 naming to docker.io/library/arqui-integracion-desastres:latest done
+#28 unpacking to docker.io/library/arqui-integracion-desastres:latest 0.0s done
+#28 DONE 0.4s
+
+#16 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#16 ...
+
+#29 [desastres] resolving provenance for metadata file
+#29 DONE 0.1s
+
+#16 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#16 3.782   Mapas.Api -> /src/Mapas.Api/bin/Release/net10.0/Mapas.Api.dll
+#16 3.812   Mapas.Api -> /app/
+#16 DONE 3.9s
+
+#30 [api stage-1 2/3] WORKDIR /app
+#30 CACHED
+
+#31 [api stage-1 3/3] COPY --from=build /app .
+#31 DONE 0.0s
+
+#32 [api] exporting to image
+#32 exporting layers 0.2s done
+#32 exporting manifest sha256:6fb3d310c70a12ee6c7a2a01ad5577aa5378081f5d549e2ebfd03ed449f474f2 done
+#32 exporting config sha256:d1e6fe458dd1ceddfe1569ee941dd193e8bafe837044c70d4400424f8a2e6b5e done
+#32 exporting attestation manifest sha256:68564f685b7ae2944d2e042161927c966554740ce612090fa44d814cb5d21506 done
+#32 exporting manifest list sha256:e5fb377d467f17fd01352bea8bc55c0d0c94c46d2b1398cb1e299f50020331d3 done
+#32 naming to docker.io/library/arqui-integracion-api:latest done
+#32 unpacking to docker.io/library/arqui-integracion-api:latest 0.0s done
+#32 DONE 0.2s
+
+#33 [api] resolving provenance for metadata file
+#33 DONE 0.0s
+ Image arqui-integracion-api Built 
+ Image arqui-integracion-desastres Built 

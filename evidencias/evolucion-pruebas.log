@@ -1,0 +1,39 @@
+OK: login único
+OK: registrar desastre
+OK: destinatario de avisos
+OK: reintentos de cambio de gravedad idempotentes
+OK: versión de desastre obsoleta rechazada
+OK: historial del cambio conserva antes/después
+OK: aviso de nueva gravedad confirmado por Taller 3/SMTP
+OK: un solo evento de gravedad para cinco reintentos
+OK: captura original aceptada
+OK: corrección crea versión 1
+OK: reintento de corrección no duplica
+OK: propuesta offline obsoleta queda en conflicto
+OK: conflicto no sobrescribe servidor
+OK: resolución explícita permite reenviar sobre versión revisada
+OK: historial de evaluaciones conserva original y correcciones
+OK: operación original permanece inmutable
+OK: reenvío original no revierte correcciones
+OK: versión actual no vuelve a cero
+OK: foto original permanece disponible tras correcciones
+OK: calor lee versión actual
+OK: solicitud nace de evaluación existente
+OK: origen y versión provienen del servidor, no del cliente
+OK: reintento de solicitud derivada no duplica
+OK: no deriva solicitud de una versión obsoleta sin revisar
+OK: cliente externo no puede falsificar atestación de evaluación
+OK: atención conserva origen de daños
+OK: nueva corrección posterior a la solicitud
+OK: solicitud conserva instantánea de origen aunque cambie la evaluación
+OK: reintento posterior a otra corrección recupera solicitud original sin duplicar
+OK: consulta no corrige evaluaciones
+OK: consulta no cambia gravedad
+OK: aislamiento nuevo flujo GET /campo/evaluaciones/ba9830b6-231f-47a0-9095-12453bf9ec03/historial
+OK: aislamiento nuevo flujo PUT /campo/evaluaciones/ba9830b6-231f-47a0-9095-12453bf9ec03
+OK: aislamiento nuevo flujo POST /campo/evaluaciones/ba9830b6-231f-47a0-9095-12453bf9ec03/solicitudes
+OK: aislamiento nuevo flujo GET /desastres/EVOLUCION-2f907780/historial
+OK: SOAP rechaza credenciales inválidas
+OK: token SOAP funciona en mapas REST
+OK: logout SOAP revoca sesión REST
+{"resultado": "APROBADO", "desastre": "EVOLUCION-2f907780", "evaluacion": "ba9830b6-231f-47a0-9095-12453bf9ec03", "solicitud": 21}

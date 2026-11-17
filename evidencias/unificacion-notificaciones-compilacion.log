@@ -1,0 +1,149 @@
+ Image arqui-integracion-desastres Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 698B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 438B 0.0s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-17
+#4 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#3 DONE 0.6s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 75B done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f
+#6 resolve docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f 0.0s done
+#6 DONE 0.0s
+
+#7 [build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584
+#7 resolve docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584 0.0s done
+#7 DONE 0.1s
+
+#8 [internal] load build context
+#8 transferring context: 8.02kB 0.0s done
+#8 DONE 0.0s
+
+#9 [build 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 3/6] COPY pom.xml .
+#10 CACHED
+
+#11 [build 4/6] RUN mvn -B dependency:go-offline
+#11 CACHED
+
+#12 [build 5/6] COPY src ./src
+#12 DONE 0.1s
+
+#13 [build 6/6] RUN mvn -B clean package
+#13 6.136 [INFO] Scanning for projects...
+#13 6.275 [INFO] 
+#13 6.276 [INFO] ----------------< co.edu.javeriana:gestion-emergencias >----------------
+#13 6.276 [INFO] Building gestion-emergencias 1.0-SNAPSHOT
+#13 6.276 [INFO]   from pom.xml
+#13 6.276 [INFO] --------------------------------[ war ]---------------------------------
+#13 7.461 [INFO] 
+#13 7.461 [INFO] --- clean:3.2.0:clean (default-clean) @ gestion-emergencias ---
+#13 7.648 [INFO] 
+#13 7.648 [INFO] --- resources:3.4.0:resources (default-resources) @ gestion-emergencias ---
+#13 7.944 [INFO] skip non existing resourceDirectory /app/src/main/resources
+#13 7.946 [INFO] 
+#13 7.946 [INFO] --- compiler:3.14.0:compile (default-compile) @ gestion-emergencias ---
+#13 8.415 [INFO] Recompiling the module because of changed source code.
+#13 8.443 [INFO] Compiling 15 source files with javac [debug release 17] to target/classes
+#13 11.56 [INFO] 
+#13 11.56 [INFO] --- resources:3.4.0:testResources (default-testResources) @ gestion-emergencias ---
+#13 11.59 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 11.59 [INFO] 
+#13 11.59 [INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ gestion-emergencias ---
+#13 11.63 [INFO] Recompiling the module because of changed dependency.
+#13 11.63 [INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
+#13 12.51 [INFO] 
+#13 12.51 [INFO] --- surefire:3.5.2:test (default-test) @ gestion-emergencias ---
+#13 13.12 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#13 14.22 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.pom
+#13 16.32 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.pom (5.7 kB at 2.7 kB/s)
+#13 16.35 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.2/surefire-providers-3.5.2.pom
+#13 16.45 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.2/surefire-providers-3.5.2.pom (2.6 kB at 26 kB/s)
+#13 16.47 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.pom
+#13 16.66 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.pom (2.8 kB at 15 kB/s)
+#13 16.68 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom
+#13 16.77 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom (3.2 kB at 34 kB/s)
+#13 16.79 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+#13 16.88 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 18 kB/s)
+#13 16.89 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom
+#13 17.08 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom (2.8 kB at 15 kB/s)
+#13 17.10 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
+#13 17.22 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 27 kB/s)
+#13 17.23 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.jar
+#13 17.82 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.jar (27 kB at 47 kB/s)
+#13 17.82 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.jar
+#13 17.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar
+#13 17.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar
+#13 17.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+#13 17.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
+#13 18.06 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.jar (18 kB at 72 kB/s)
+#13 18.10 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 28 kB/s)
+#13 18.17 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 488 kB/s)
+#13 18.19 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar (103 kB at 283 kB/s)
+#13 18.20 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar (189 kB at 503 kB/s)
+#13 18.21 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.pom
+#13 18.30 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.pom (3.0 kB at 34 kB/s)
+#13 18.31 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.jar
+#13 18.44 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.jar (189 kB at 1.4 MB/s)
+#13 18.47 [INFO] 
+#13 18.47 [INFO] -------------------------------------------------------
+#13 18.47 [INFO]  T E S T S
+#13 18.47 [INFO] -------------------------------------------------------
+#13 20.54 [INFO] Running co.edu.javeriana.emergencias.DesastreTest
+#13 21.24 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#13 25.22 [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.718 s -- in co.edu.javeriana.emergencias.DesastreTest
+#13 25.31 [INFO] 
+#13 25.31 [INFO] Results:
+#13 25.31 [INFO] 
+#13 25.32 [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+#13 25.32 [INFO] 
+#13 25.37 [INFO] 
+#13 25.37 [INFO] --- war:3.4.0:war (default-war) @ gestion-emergencias ---
+#13 27.21 [INFO] Packaging webapp
+#13 27.23 [INFO] Assembling webapp [gestion-emergencias] in [/app/target/gestion-emergencias]
+#13 27.25 [INFO] Processing war project
+#13 27.48 [INFO] Building war: /app/target/gestion-emergencias.war
+#13 27.67 [INFO] ------------------------------------------------------------------------
+#13 27.67 [INFO] BUILD SUCCESS
+#13 27.67 [INFO] ------------------------------------------------------------------------
+#13 27.69 [INFO] Total time:  21.618 s
+#13 27.70 [INFO] Finished at: 2026-11-09T19:45:48Z
+#13 27.70 [INFO] ------------------------------------------------------------------------
+#13 DONE 27.9s
+
+#14 [stage-1 2/3] RUN mkdir -p /opt/payara/registro && chown payara:payara /opt/payara/registro
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build /app/target/gestion-emergencias.war /opt/payara/deployments/gestion-emergencias.war
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.2s done
+#16 exporting manifest sha256:d8a9e931c00f62625010025643d049362ff83851189974c6d54ad615798c145d 0.0s done
+#16 exporting config sha256:4caec21599ad7c7a9fd05113dc156c3d194720ac857056059e08e62ce936f6ee 0.0s done
+#16 exporting attestation manifest sha256:04df13b85d2c3d3b8b124ad776f7fdf6895d16c0d8cf1b9a4941f95a94438463 0.0s done
+#16 exporting manifest list sha256:09fb67301b8c3b5a65d590f8ea69a65f06c2786fd739c077a6202948557892a2
+#16 exporting manifest list sha256:09fb67301b8c3b5a65d590f8ea69a65f06c2786fd739c077a6202948557892a2 0.0s done
+#16 naming to docker.io/library/arqui-integracion-desastres:latest done
+#16 unpacking to docker.io/library/arqui-integracion-desastres:latest 0.1s done
+#16 DONE 0.5s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.1s
+ Image arqui-integracion-desastres Built 

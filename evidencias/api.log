@@ -1,0 +1,11 @@
+test_01_salud_catalogos (__main__.ApiTests) ... ok
+test_02_crud_filtros_version (__main__.ApiTests) ... ok
+test_03_validacion_limites_y_ausencias (__main__.ApiTests) ... ok
+test_04_geojson_orden_y_atomicidad (__main__.ApiTests) ... ok
+test_05_geojson_malformado (__main__.ApiTests) ... ok
+test_06_actualizacion_concurrente (__main__.ApiTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.192s
+
+OK

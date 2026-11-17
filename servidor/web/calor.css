@@ -1,0 +1,6 @@
+.heat-panel { margin-block: 18px; padding: 20px; }
+.heat-panel #mapa { height: clamp(300px, 60vh, 620px); background: #e3e9ee; }
+.heat-panel canvas { pointer-events: none; }
+.heat-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.heat-scale { width: 170px; height: 12px; border-radius: 8px; background: linear-gradient(to right, #2375de, #32cd9a, #ffe65c, #d92d2d); }
+.heat-table { overflow-x: auto; }

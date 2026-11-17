@@ -1,0 +1,49 @@
+@startuml
+!theme plain
+skinparam shadowing false
+left to right direction
+title Taller 3 — Despliegue Docker Compose
+
+actor "Operador / navegador" as Operador
+node "Computador local — Docker Desktop" {
+  frame "Red taller3-thomas_default" {
+    node "emergencias\nPayara 6 / JDK 17" as Jakarta {
+      artifact "gestion-emergencias.war\nJakarta EE 10 / EJB / REST" as WAR
+    }
+    node "rabbitmq\nRabbitMQ 4.1 management" as Broker {
+      queue "Exchanges y colas durables" as Colas
+    }
+    node "mailpit\nMailpit 1.27.4" as Mail {
+      artifact "SMTP y buzón web" as Buzon
+    }
+    node "Perfil demo — procesos opcionales" as Demo {
+      artifact "Productor AMQP" as Productor
+      artifact "Consumidores AMQP" as Consumidores
+    }
+  }
+  database "Volumen registro\n/opt/payara/registro" as Registro
+  database "Volumen mensajes\n/var/lib/rabbitmq" as Mensajes
+  database "Volumen correos\n/data" as Correos
+}
+
+Operador --> Jakarta : HTTP localhost:8081 → 8080
+Operador --> Broker : Consola localhost:15673 → 15672
+Operador --> Mail : Buzón localhost:8026 → 8025
+WAR --> Colas : AMQP rabbitmq:5672
+WAR --> Buzon : SMTP mailpit:1025
+Productor --> Colas : AMQP rabbitmq:5672
+Consumidores --> Colas : AMQP rabbitmq:5672 / ACK
+Jakarta --> Registro
+Broker --> Mensajes
+Mail --> Correos
+
+note bottom of Broker
+AMQP externo: localhost:5673 → 5672.
+Entre contenedores se usan nombre del servicio
+y puerto interno; no el puerto del host.
+end note
+note bottom of Jakarta
+Una instancia del negocio en un WAR.
+Capas dentro del contenedor Jakarta.
+end note
+@enduml

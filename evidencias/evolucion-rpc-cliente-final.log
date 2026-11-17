@@ -1,0 +1,191 @@
+ Image arqui-integracion-prueba-rpc Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 698B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 548B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21
+#4 DONE 1.4s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#3 DONE 9.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#6 resolve docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a 0.0s done
+#6 DONE 0.0s
+
+#7 [build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320
+#7 resolve docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320 0.0s done
+#7 DONE 0.0s
+
+#8 [stage-1 2/4] WORKDIR /app
+#8 CACHED
+
+#9 [internal] load build context
+#9 transferring context: 783B done
+#9 DONE 0.0s
+
+#10 [build 2/6] WORKDIR /app
+#10 CACHED
+
+#11 [build 4/6] COPY settings.xml .
+#11 CACHED
+
+#12 [build 3/6] COPY pom.xml .
+#12 CACHED
+
+#13 [build 5/6] COPY src src
+#13 CACHED
+
+#14 [build 6/6] RUN --mount=type=cache,target=/root/.m2 mvn -s settings.xml -Daether.connector.http.connectTimeout=15000 -Daether.connector.http.requestTimeout=30000 -U -B compile dependency:copy-dependencies -DoutputDirectory=target/lib
+#14 0.517 [INFO] Scanning for projects...
+#14 0.565 [INFO] 
+#14 0.565 [INFO] ------------------------< co.edu.arqui:interop >------------------------
+#14 0.565 [INFO] Building interop 1.0
+#14 0.565 [INFO]   from pom.xml
+#14 0.565 [INFO] --------------------------------[ jar ]---------------------------------
+#14 0.938 [INFO] 
+#14 0.938 [INFO] --- resources:3.4.0:resources (default-resources) @ interop ---
+#14 0.981 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+#14 0.981 [INFO] skip non existing resourceDirectory /app/src/main/resources
+#14 0.982 [INFO] 
+#14 0.982 [INFO] --- compiler:3.13.0:compile (default-compile) @ interop ---
+#14 1.017 [INFO] Recompiling the module because of changed source code.
+#14 1.017 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+#14 1.020 [INFO] Compiling 3 source files with javac [debug release 21] to target/classes
+#14 1.270 [INFO] Annotation processing is enabled because one or more processors were found
+#14 1.270   on the class path. A future release of javac may disable annotation processing
+#14 1.270   unless at least one processor is specified by name (-processor), or a search
+#14 1.270   path is specified (--processor-path, --processor-module-path), or annotation
+#14 1.270   processing is enabled explicitly (-proc:only, -proc:full).
+#14 1.270   Use -Xlint:-options to suppress this message.
+#14 1.270   Use -proc:none to disable annotation processing.
+#14 1.270 [INFO] 
+#14 1.270 [INFO] --- dependency:3.7.1:copy-dependencies (default-cli) @ interop ---
+#14 1.423 [INFO] Copying artifact 'org.wildfly:wildfly-ejb-client-bom:pom:41.0.1.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-ejb-client-bom/41.0.1.Final/wildfly-ejb-client-bom-41.0.1.Final.pom) to /app/target/lib/wildfly-ejb-client-bom-41.0.1.Final.pom
+#14 1.425 [INFO] Copying artifact 'jakarta.resource:jakarta.resource-api:jar:2.1.0:compile' (/root/.m2/repository/jakarta/resource/jakarta.resource-api/2.1.0/jakarta.resource-api-2.1.0.jar) to /app/target/lib/jakarta.resource-api-2.1.0.jar
+#14 1.426 [INFO] Copying artifact 'org.jboss:jboss-ejb-client:jar:5.0.8.Final:compile' (/root/.m2/repository/org/jboss/jboss-ejb-client/5.0.8.Final/jboss-ejb-client-5.0.8.Final.jar) to /app/target/lib/jboss-ejb-client-5.0.8.Final.jar
+#14 1.426 [INFO] Copying artifact 'org.jboss.ejb3:jboss-ejb3-ext-api:jar:2.4.0.Final:compile' (/root/.m2/repository/org/jboss/ejb3/jboss-ejb3-ext-api/2.4.0.Final/jboss-ejb3-ext-api-2.4.0.Final.jar) to /app/target/lib/jboss-ejb3-ext-api-2.4.0.Final.jar
+#14 1.426 [INFO] Copying artifact 'org.wildfly.wildfly-http-client:wildfly-http-ejb-client:jar:2.1.4.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-http-client/wildfly-http-ejb-client/2.1.4.Final/wildfly-http-ejb-client-2.1.4.Final.jar) to /app/target/lib/wildfly-http-ejb-client-2.1.4.Final.jar
+#14 1.426 [INFO] Copying artifact 'org.kohsuke.metainf-services:metainf-services:jar:1.11:compile' (/root/.m2/repository/org/kohsuke/metainf-services/metainf-services/1.11/metainf-services-1.11.jar) to /app/target/lib/metainf-services-1.11.jar
+#14 1.426 [INFO] Copying artifact 'jakarta.transaction:jakarta.transaction-api:jar:2.0.1:compile' (/root/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar) to /app/target/lib/jakarta.transaction-api-2.0.1.jar
+#14 1.427 [INFO] Copying artifact 'jakarta.annotation:jakarta.annotation-api:jar:3.0.0:compile' (/root/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar) to /app/target/lib/jakarta.annotation-api-3.0.0.jar
+#14 1.427 [INFO] Copying artifact 'jakarta.ejb:jakarta.ejb-api:jar:4.0.1:compile' (/root/.m2/repository/jakarta/ejb/jakarta.ejb-api/4.0.1/jakarta.ejb-api-4.0.1.jar) to /app/target/lib/jakarta.ejb-api-4.0.1.jar
+#14 1.428 [INFO] Copying artifact 'org.wildfly.transaction:wildfly-transaction-client:jar:3.0.5.Final:compile' (/root/.m2/repository/org/wildfly/transaction/wildfly-transaction-client/3.0.5.Final/wildfly-transaction-client-3.0.5.Final.jar) to /app/target/lib/wildfly-transaction-client-3.0.5.Final.jar
+#14 1.428 [INFO] Copying artifact 'org.jboss.marshalling:jboss-marshalling:jar:2.3.0:compile' (/root/.m2/repository/org/jboss/marshalling/jboss-marshalling/2.3.0/jboss-marshalling-2.3.0.jar) to /app/target/lib/jboss-marshalling-2.3.0.jar
+#14 1.428 [INFO] Copying artifact 'org.jboss.marshalling:jboss-marshalling-river:jar:2.3.0:compile' (/root/.m2/repository/org/jboss/marshalling/jboss-marshalling-river/2.3.0/jboss-marshalling-river-2.3.0.jar) to /app/target/lib/jboss-marshalling-river-2.3.0.jar
+#14 1.428 [INFO] Copying artifact 'org.jboss.xnio:xnio-api:jar:3.8.16.Final:compile' (/root/.m2/repository/org/jboss/xnio/xnio-api/3.8.16.Final/xnio-api-3.8.16.Final.jar) to /app/target/lib/xnio-api-3.8.16.Final.jar
+#14 1.429 [INFO] Copying artifact 'org.jboss.threads:jboss-threads:jar:3.9.2:compile' (/root/.m2/repository/org/jboss/threads/jboss-threads/3.9.2/jboss-threads-3.9.2.jar) to /app/target/lib/jboss-threads-3.9.2.jar
+#14 1.429 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-annotation:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-annotation/2.19.0/smallrye-common-annotation-2.19.0.jar) to /app/target/lib/smallrye-common-annotation-2.19.0.jar
+#14 1.430 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-function:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-function/2.19.0/smallrye-common-function-2.19.0.jar) to /app/target/lib/smallrye-common-function-2.19.0.jar
+#14 1.430 [INFO] Copying artifact 'org.jboss.xnio:xnio-nio:jar:3.8.16.Final:compile' (/root/.m2/repository/org/jboss/xnio/xnio-nio/3.8.16.Final/xnio-nio-3.8.16.Final.jar) to /app/target/lib/xnio-nio-3.8.16.Final.jar
+#14 1.430 [INFO] Copying artifact 'org.jboss.remoting:jboss-remoting:jar:5.0.32.Final:compile' (/root/.m2/repository/org/jboss/remoting/jboss-remoting/5.0.32.Final/jboss-remoting-5.0.32.Final.jar) to /app/target/lib/jboss-remoting-5.0.32.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth-server:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth-server/2.9.2.Final/wildfly-elytron-auth-server-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-server-2.9.2.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth-server-deprecated:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth-server-deprecated/2.9.2.Final/wildfly-elytron-auth-server-deprecated-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-server-deprecated-2.9.2.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth-server-sasl:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth-server-sasl/2.9.2.Final/wildfly-elytron-auth-server-sasl-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-server-sasl-2.9.2.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-client:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-client/2.9.2.Final/wildfly-elytron-client-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-client-2.9.2.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth-util/2.9.2.Final/wildfly-elytron-auth-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-util-2.9.2.Final.jar
+#14 1.431 [INFO] Copying artifact 'org.apache.sshd:sshd-common:jar:2.19.0:compile' (/root/.m2/repository/org/apache/sshd/sshd-common/2.19.0/sshd-common-2.19.0.jar) to /app/target/lib/sshd-common-2.19.0.jar
+#14 1.432 [INFO] Copying artifact 'org.slf4j:slf4j-api:jar:2.0.18:compile' (/root/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar) to /app/target/lib/slf4j-api-2.0.18.jar
+#14 1.432 [INFO] Copying artifact 'org.slf4j:jcl-over-slf4j:jar:2.0.18:compile' (/root/.m2/repository/org/slf4j/jcl-over-slf4j/2.0.18/jcl-over-slf4j-2.0.18.jar) to /app/target/lib/jcl-over-slf4j-2.0.18.jar
+#14 1.432 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-credential-source-impl:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-credential-source-impl/2.9.2.Final/wildfly-elytron-credential-source-impl-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-credential-source-impl-2.9.2.Final.jar
+#14 1.432 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-credential-store:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-credential-store/2.9.2.Final/wildfly-elytron-credential-store-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-credential-store-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-keystore:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-keystore/2.9.2.Final/wildfly-elytron-keystore-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-keystore-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-x500-cert:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-x500-cert/2.9.2.Final/wildfly-elytron-x500-cert-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-x500-cert-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-x500-cert-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-x500-cert-util/2.9.2.Final/wildfly-elytron-x500-cert-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-x500-cert-util-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-password-impl:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-password-impl/2.9.2.Final/wildfly-elytron-password-impl-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-password-impl-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-provider-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-provider-util/2.9.2.Final/wildfly-elytron-provider-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-provider-util-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-ssh-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-ssh-util/2.9.2.Final/wildfly-elytron-ssh-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-ssh-util-2.9.2.Final.jar
+#14 1.433 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl/2.9.2.Final/wildfly-elytron-sasl-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-2.9.2.Final.jar
+#14 1.434 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-ssl:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-ssl/2.9.2.Final/wildfly-elytron-ssl-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-ssl-2.9.2.Final.jar
+#14 1.434 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-auth-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-auth-util/2.9.2.Final/wildfly-elytron-sasl-auth-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-auth-util-2.9.2.Final.jar
+#14 1.434 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-security-manager:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-security-manager/2.9.2.Final/wildfly-elytron-security-manager-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-security-manager-2.9.2.Final.jar
+#14 1.434 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-realm:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-realm/2.9.2.Final/wildfly-elytron-realm-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-realm-2.9.2.Final.jar
+#14 1.435 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-encryption:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-encryption/2.9.2.Final/wildfly-elytron-encryption-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-encryption-2.9.2.Final.jar
+#14 1.435 [INFO] Copying artifact 'org.jboss.logging:jboss-logging:jar:3.6.3.Final:compile' (/root/.m2/repository/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar) to /app/target/lib/jboss-logging-3.6.3.Final.jar
+#14 1.435 [INFO] Copying artifact 'org.wildfly.client:wildfly-client-config:jar:1.0.1.Final:compile' (/root/.m2/repository/org/wildfly/client/wildfly-client-config/1.0.1.Final/wildfly-client-config-1.0.1.Final.jar) to /app/target/lib/wildfly-client-config-1.0.1.Final.jar
+#14 1.435 [INFO] Copying artifact 'org.wildfly.common:wildfly-common:jar:2.0.1:compile' (/root/.m2/repository/org/wildfly/common/wildfly-common/2.0.1/wildfly-common-2.0.1.jar) to /app/target/lib/wildfly-common-2.0.1.jar
+#14 1.435 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-cpu:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-cpu/2.19.0/smallrye-common-cpu-2.19.0.jar) to /app/target/lib/smallrye-common-cpu-2.19.0.jar
+#14 1.435 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-expression:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-expression/2.19.0/smallrye-common-expression-2.19.0.jar) to /app/target/lib/smallrye-common-expression-2.19.0.jar
+#14 1.435 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-net:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-net/2.19.0/smallrye-common-net-2.19.0.jar) to /app/target/lib/smallrye-common-net-2.19.0.jar
+#14 1.435 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-os:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-os/2.19.0/smallrye-common-os-2.19.0.jar) to /app/target/lib/smallrye-common-os-2.19.0.jar
+#14 1.435 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-ref:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-ref/2.19.0/smallrye-common-ref-2.19.0.jar) to /app/target/lib/smallrye-common-ref-2.19.0.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.discovery:wildfly-discovery-client:jar:1.3.0.Final:compile' (/root/.m2/repository/org/wildfly/discovery/wildfly-discovery-client/1.3.0.Final/wildfly-discovery-client-1.3.0.Final.jar) to /app/target/lib/wildfly-discovery-client-1.3.0.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-digest:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-digest/2.9.2.Final/wildfly-elytron-digest-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-digest-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-base:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-base/2.9.2.Final/wildfly-elytron-base-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-base-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism-digest:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism-digest/2.9.2.Final/wildfly-elytron-mechanism-digest-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-digest-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-credential:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-credential/2.9.2.Final/wildfly-elytron-credential-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-credential-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism/2.9.2.Final/wildfly-elytron-mechanism-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism-gssapi:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism-gssapi/2.9.2.Final/wildfly-elytron-mechanism-gssapi-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-gssapi-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-security-manager-action:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-security-manager-action/2.9.2.Final/wildfly-elytron-security-manager-action-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-security-manager-action-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism-oauth2:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism-oauth2/2.9.2.Final/wildfly-elytron-mechanism-oauth2-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-oauth2-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism-scram:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism-scram/2.9.2.Final/wildfly-elytron-mechanism-scram-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-scram-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-anonymous:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-anonymous/2.9.2.Final/wildfly-elytron-sasl-anonymous-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-anonymous-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth/2.9.2.Final/wildfly-elytron-auth-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-2.9.2.Final.jar
+#14 1.436 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-digest:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-digest/2.9.2.Final/wildfly-elytron-sasl-digest-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-digest-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-util/2.9.2.Final/wildfly-elytron-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-util-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-deprecated:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-deprecated/2.9.2.Final/wildfly-elytron-sasl-deprecated-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-deprecated-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-entity:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-entity/2.9.2.Final/wildfly-elytron-sasl-entity-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-entity-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-asn1:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-asn1/2.9.2.Final/wildfly-elytron-asn1-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-asn1-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-external:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-external/2.9.2.Final/wildfly-elytron-sasl-external-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-external-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-gs2:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-gs2/2.9.2.Final/wildfly-elytron-sasl-gs2-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-gs2-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-gssapi:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-gssapi/2.9.2.Final/wildfly-elytron-sasl-gssapi-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-gssapi-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-oauth2:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-oauth2/2.9.2.Final/wildfly-elytron-sasl-oauth2-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-oauth2-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-otp:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-otp/2.9.2.Final/wildfly-elytron-sasl-otp-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-otp-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-plain:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-plain/2.9.2.Final/wildfly-elytron-sasl-plain-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-plain-2.9.2.Final.jar
+#14 1.437 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-scram:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-scram/2.9.2.Final/wildfly-elytron-sasl-scram-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-scram-2.9.2.Final.jar
+#14 1.438 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-x500:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-x500/2.9.2.Final/wildfly-elytron-x500-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-x500-2.9.2.Final.jar
+#14 1.438 [INFO] Copying artifact 'org.wildfly:wildfly-naming-client:jar:2.0.1.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-naming-client/2.0.1.Final/wildfly-naming-client-2.0.1.Final.jar) to /app/target/lib/wildfly-naming-client-2.0.1.Final.jar
+#14 1.438 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-permission:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-permission/2.9.2.Final/wildfly-elytron-permission-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-permission-2.9.2.Final.jar
+#14 1.438 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-sasl-localuser:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-sasl-localuser/2.9.2.Final/wildfly-elytron-sasl-localuser-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-sasl-localuser-2.9.2.Final.jar
+#14 1.438 [INFO] Copying artifact 'io.smallrye.common:smallrye-common-constraint:jar:2.19.0:compile' (/root/.m2/repository/io/smallrye/common/smallrye-common-constraint/2.19.0/smallrye-common-constraint-2.19.0.jar) to /app/target/lib/smallrye-common-constraint-2.19.0.jar
+#14 1.438 [INFO] Copying artifact 'io.undertow:undertow-core:jar:2.4.3.Final:compile' (/root/.m2/repository/io/undertow/undertow-core/2.4.3.Final/undertow-core-2.4.3.Final.jar) to /app/target/lib/undertow-core-2.4.3.Final.jar
+#14 1.440 [INFO] Copying artifact 'org.wildfly.wildfly-http-client:wildfly-http-client-common:jar:2.1.4.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-http-client/wildfly-http-client-common/2.1.4.Final/wildfly-http-client-common-2.1.4.Final.jar) to /app/target/lib/wildfly-http-client-common-2.1.4.Final.jar
+#14 1.440 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-auth-server-http:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-auth-server-http/2.9.2.Final/wildfly-elytron-auth-server-http-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-auth-server-http-2.9.2.Final.jar
+#14 1.440 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-http:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-http/2.9.2.Final/wildfly-elytron-http-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-http-2.9.2.Final.jar
+#14 1.440 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-http-basic:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-http-basic/2.9.2.Final/wildfly-elytron-http-basic-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-http-basic-2.9.2.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-mechanism-http:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-mechanism-http/2.9.2.Final/wildfly-elytron-mechanism-http-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-mechanism-http-2.9.2.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-http-cert:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-http-cert/2.9.2.Final/wildfly-elytron-http-cert-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-http-cert-2.9.2.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-http-digest:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-http-digest/2.9.2.Final/wildfly-elytron-http-digest-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-http-digest-2.9.2.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.security:wildfly-elytron-http-util:jar:2.9.2.Final:compile' (/root/.m2/repository/org/wildfly/security/wildfly-elytron-http-util/2.9.2.Final/wildfly-elytron-http-util-2.9.2.Final.jar) to /app/target/lib/wildfly-elytron-http-util-2.9.2.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.wildfly-http-client:wildfly-http-naming-client:jar:2.1.4.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-http-client/wildfly-http-naming-client/2.1.4.Final/wildfly-http-naming-client-2.1.4.Final.jar) to /app/target/lib/wildfly-http-naming-client-2.1.4.Final.jar
+#14 1.441 [INFO] Copying artifact 'org.wildfly.wildfly-http-client:wildfly-http-transaction-client:jar:2.1.4.Final:compile' (/root/.m2/repository/org/wildfly/wildfly-http-client/wildfly-http-transaction-client/2.1.4.Final/wildfly-http-transaction-client-2.1.4.Final.jar) to /app/target/lib/wildfly-http-transaction-client-2.1.4.Final.jar
+#14 1.442 [INFO] ------------------------------------------------------------------------
+#14 1.442 [INFO] BUILD SUCCESS
+#14 1.442 [INFO] ------------------------------------------------------------------------
+#14 1.442 [INFO] Total time:  0.931 s
+#14 1.442 [INFO] Finished at: 2026-11-10T16:33:06Z
+#14 1.442 [INFO] ------------------------------------------------------------------------
+#14 DONE 1.5s
+
+#15 [stage-1 3/4] COPY --from=build /app/target/classes ./classes
+#15 DONE 0.0s
+
+#16 [stage-1 4/4] COPY --from=build /app/target/lib ./lib
+#16 DONE 0.0s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 0.2s done
+#17 exporting manifest sha256:d19662c7d1d4f7734aa257693f46a104f15698cc16570b42d0ffcd0b5eb82533 done
+#17 exporting config sha256:11aae69617f2152c986298014a87a612d427ca3584d7a08d32c25cb42e5bd3d0 done
+#17 exporting attestation manifest sha256:5b150b0e6441521e3f3af4878606d05135f192889d3922a4017d4b5ca8622f98 done
+#17 exporting manifest list sha256:2498311c78f403d36b1a566cb3cba1d2b5b84e2b4bd21c340e27f2d519380028 done
+#17 naming to docker.io/library/arqui-integracion-prueba-rpc:latest done
+#17 unpacking to docker.io/library/arqui-integracion-prueba-rpc:latest
+#17 unpacking to docker.io/library/arqui-integracion-prueba-rpc:latest 0.7s done
+#17 DONE 0.9s
+
+#18 resolving provenance for metadata file
+#18 DONE 0.0s
+ Image arqui-integracion-prueba-rpc Built 

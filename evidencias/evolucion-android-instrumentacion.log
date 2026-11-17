@@ -1,0 +1,40 @@
+INSTRUMENTATION_STATUS: fase=OK: migración conserva capturas de una copia de la base anterior
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: login real del APK
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: captura Android sincronizada
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=DETENER_API
+ Container arqui-integracion-api-1 Stopping 
+ Container arqui-integracion-api-1 Stopped 
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: servidor desconectado de verdad
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: corrección persiste al reabrir SQLite sin conexión
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: fallo de red conserva propuesta pendiente
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=RESTAURAR_API
+ Container arqui-integracion-db-1 Waiting 
+ Container arqui-integracion-db-1 Healthy 
+ Container arqui-integracion-api-1 Starting 
+ Container arqui-integracion-api-1 Started 
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: conexión restaurada
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: conflicto conserva servidor y propuesta local
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: versión remota identificada
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: resolución sincronizada como nueva versión
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: captura original local inmutable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: fase=OK: logout del APK
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=APROBADO: SQLite, login, desconexión real y resolución de conflictos en Android
+
+INSTRUMENTATION_CODE: -1
+ Container arqui-integracion-db-1 Waiting 
+ Container arqui-integracion-db-1 Healthy 
+RESULTADO ANDROID: APROBADO

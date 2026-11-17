@@ -1,0 +1,11 @@
+.construir/
+*.zip
+.DS_Store
+node_modules/
+target/
+dist/
+bin/
+obj/
+__pycache__/
+*.pyc
+arranque.log

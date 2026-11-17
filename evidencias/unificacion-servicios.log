@@ -1,0 +1,9 @@
+NAME                            IMAGE                         COMMAND                  SERVICE     CREATED          STATUS                    PORTS
+arqui-integracion-api-1         arqui-integracion-api         "dotnet Mapas.Api.dll"   api         10 minutes ago   Up 6 minutes              8080/tcp
+arqui-integracion-database-1    postgres:17-alpine            "docker-entrypoint.s…"   database    13 minutes ago   Up 13 minutes (healthy)   5432/tcp
+arqui-integracion-db-1          postgres:17-alpine            "docker-entrypoint.s…"   db          44 hours ago     Up 44 hours (healthy)     5432/tcp
+arqui-integracion-desastres-1   arqui-integracion-desastres   "tini -- /opt/payara…"   desastres   8 minutes ago    Up 8 minutes              4848/tcp, 8080/tcp, 8181/tcp, 9009/tcp
+arqui-integracion-mailpit-1     axllent/mailpit:v1.27.4       "/mailpit"               mailpit     15 hours ago     Up 15 hours (healthy)     127.0.0.1:18026->8025/tcp
+arqui-integracion-nucleo-1      arqui-integracion-nucleo      "/__cacert_entrypoin…"   nucleo      13 minutes ago   Up 6 minutes              127.0.0.1:18092->8080/tcp
+arqui-integracion-rabbitmq-1    rabbitmq:4.1-management       "docker-entrypoint.s…"   rabbitmq    15 hours ago     Up 6 minutes (healthy)    127.0.0.1:15683->5672/tcp, 127.0.0.1:15684->15672/tcp
+arqui-integracion-web-1         nginx:1.28-alpine             "/docker-entrypoint.…"   web         44 hours ago     Up 44 hours               127.0.0.1:18085->80/tcp

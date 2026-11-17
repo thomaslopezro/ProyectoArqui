@@ -1,0 +1,65 @@
+[
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/ReglaNegocioException.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/ReglaNegocioException.java",
+    "conservadoSinCambios": true,
+    "sha256": "82dff7dcb49328a8d4d45adc6a11247fb2701ea8da6269ae7eb6e6a40e063578"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/SolicitudNoEncontradaException.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/SolicitudNoEncontradaException.java",
+    "conservadoSinCambios": true,
+    "sha256": "77bd006da1ad6ded32d6c16dda1daf3523d62e6d6cdbd428e4efd5b82e07d69f"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/SolicitudYaAtendidaException.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/excepcion/SolicitudYaAtendidaException.java",
+    "conservadoSinCambios": true,
+    "sha256": "b771cad5b77c90addfcf9284552afed7334c00b0a982551288abfc3d5569095f"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/puerto/SolicitudCasosUso.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/puerto/SolicitudCasosUso.java",
+    "conservadoSinCambios": true,
+    "sha256": "2a39b1c27a0206f0e2167a99f80a5b6bba49b08a706c4fe43efae8381a87e815"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/puerto/SolicitudRepositorio.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/puerto/SolicitudRepositorio.java",
+    "conservadoSinCambios": true,
+    "sha256": "4bfb387f9785e5986042adc95d0f265391fb612cef1b2e92423592d87d56e1c1"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/aplicacion/servicio/SolicitudServicio.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/aplicacion/servicio/SolicitudServicio.java",
+    "conservadoSinCambios": true,
+    "sha256": "05f1b41834d06548a8dae88d51f1262d200de4356afe02b377d008d540288927"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/dominio/modelo/EstadoSolicitud.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/dominio/modelo/EstadoSolicitud.java",
+    "conservadoSinCambios": true,
+    "sha256": "21f53dd4f8136e0eedb27ed56f3046ce385b19cecbb9822d3dcc7dbe84e4b119"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/dominio/modelo/Prioridad.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/dominio/modelo/Prioridad.java",
+    "conservadoSinCambios": true,
+    "sha256": "8b47c02a5c953d494f8defb6e8f89476e5739a7d19a4c4dad85831729988ceb3"
+  },
+  {
+    "origenZip": "gestion-emergencias 2.zip",
+    "archivo": "main/java/co/edu/javeriana/emergencias/dominio/modelo/Solicitud.java",
+    "destino": "nucleo/src/main/java/co/edu/javeriana/emergencias/dominio/modelo/Solicitud.java",
+    "conservadoSinCambios": true,
+    "sha256": "c9b4895c5bd800b77176b8fceba7d8a879b23584c46dd6e96a0a8865b4ec76f1"
+  }
+]

@@ -1,0 +1,172 @@
+ Image arqui-integracion-api Building 
+ Image arqui-integracion-desastres Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.28kB done
+#1 DONE 0.0s
+
+#2 [desastres internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 447B done
+#3 DONE 0.0s
+
+#2 [desastres internal] load build definition from Dockerfile
+#2 transferring dockerfile: 438B done
+#2 DONE 0.0s
+
+#4 [desastres internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-17
+#4 DONE 0.0s
+
+#5 [desastres internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#5 ...
+
+#6 [api internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#6 DONE 0.5s
+
+#7 [api internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#7 DONE 0.5s
+
+#8 [api internal] load .dockerignore
+#8 transferring context: 72B done
+#8 DONE 0.0s
+
+#9 [api stage-1 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c
+#9 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c done
+#9 DONE 0.0s
+
+#10 [api build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e
+#10 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e done
+#10 DONE 0.0s
+
+#11 [api internal] load build context
+#11 transferring context: 32.83kB done
+#11 DONE 0.0s
+
+#12 [api build 2/6] WORKDIR /src
+#12 CACHED
+
+#13 [api build 3/6] COPY src/Mapas.Api/Mapas.Api.csproj Mapas.Api/
+#13 CACHED
+
+#14 [api build 4/6] RUN dotnet restore Mapas.Api/Mapas.Api.csproj
+#14 CACHED
+
+#15 [api build 5/6] COPY src/Mapas.Api/ Mapas.Api/
+#15 DONE 0.0s
+
+#16 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#16 ...
+
+#5 [desastres internal] load metadata for docker.io/payara/server-full:6.2025.11-jdk17
+#5 DONE 0.9s
+
+#17 [desastres internal] load .dockerignore
+#17 transferring context: 75B done
+#17 DONE 0.0s
+
+#18 [desastres build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584
+#18 resolve docker.io/library/maven:3.9-eclipse-temurin-17@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584 0.0s done
+#18 DONE 0.0s
+
+#19 [desastres stage-1 1/3] FROM docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f
+#19 resolve docker.io/payara/server-full:6.2025.11-jdk17@sha256:b906456ccd271e18093add5a0af1c9e8aa22613f331d2ea300d7bbb05425757f done
+#19 DONE 0.0s
+
+#20 [desastres internal] load build context
+#20 transferring context: 36.28kB done
+#20 DONE 0.0s
+
+#21 [desastres build 5/6] COPY src ./src
+#21 CACHED
+
+#22 [desastres build 2/6] WORKDIR /app
+#22 CACHED
+
+#23 [desastres stage-1 2/3] RUN mkdir -p /opt/payara/registro && chown payara:payara /opt/payara/registro
+#23 CACHED
+
+#24 [desastres build 3/6] COPY pom.xml .
+#24 CACHED
+
+#25 [desastres build 4/6] RUN mvn -B dependency:go-offline
+#25 CACHED
+
+#26 [desastres build 6/6] RUN mvn -B clean package
+#26 CACHED
+
+#27 [desastres stage-1 3/3] COPY --from=build /app/target/gestion-emergencias.war /opt/payara/deployments/gestion-emergencias.war
+#27 CACHED
+
+#28 [desastres] exporting to image
+#28 exporting layers done
+#28 exporting manifest sha256:5ae86bc3af5ef4789a76bf304df26a70c158cb441ea0a3ad0b9d59fe92bfb328 done
+#28 exporting config sha256:7b65654fda26af7b998fdcd00cfc70a5d84873a5c8e42ad48af236d85deb1d12 done
+#28 exporting attestation manifest sha256:9440693d026e31a30c0f1003f78343cb4201a23808059ef0657e415ebc56c4ec done
+#28 exporting manifest list sha256:f3c1320bb86b0d13a1cccbafe110fceefdc416e032735672ee7749aa8dd6ba58 done
+#28 naming to docker.io/library/arqui-integracion-desastres:latest done
+#28 unpacking to docker.io/library/arqui-integracion-desastres:latest done
+#28 DONE 0.0s
+
+#29 [desastres] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#16 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#16 1.408   Mapas.Api -> /src/Mapas.Api/bin/Release/net10.0/Mapas.Api.dll
+#16 1.424   Mapas.Api -> /app/
+#16 DONE 1.5s
+
+#30 [api stage-1 2/3] WORKDIR /app
+#30 CACHED
+
+#31 [api stage-1 3/3] COPY --from=build /app .
+#31 DONE 0.0s
+
+#32 [api] exporting to image
+#32 exporting layers 0.2s done
+#32 exporting manifest sha256:db1088a1f698ba7103847285db051e16e5933442220f40bbfc06c8f71fe493fb done
+#32 exporting config sha256:6e7003c529e6073352679c1f2ddf891ac86bf58c945d52da72f2fe45a3dce0ce done
+#32 exporting attestation manifest sha256:113475b67d887828271d5a04499e05e9afe91ba608f349e5dbd0a07249a206e6 done
+#32 exporting manifest list sha256:0c9959b3c7d2d21bbe9c47c63b9b4f84e04244aee14f594e2c50d0ce5113e869 done
+#32 naming to docker.io/library/arqui-integracion-api:latest done
+#32 unpacking to docker.io/library/arqui-integracion-api:latest 0.0s done
+#32 DONE 0.2s
+
+#33 [api] resolving provenance for metadata file
+#33 DONE 0.0s
+ Image arqui-integracion-api Built 
+ Image arqui-integracion-desastres Built 
+ Container arqui-integracion-web-1 Running 
+ Container arqui-integracion-db-1 Running 
+ Volume arqui-integracion_mensajes Creating 
+ Volume arqui-integracion_correos Creating 
+ Volume arqui-integracion_registro-desastres Creating 
+ Volume arqui-integracion_mensajes Creating 
+ Volume arqui-integracion_registro-desastres Creating 
+ Volume arqui-integracion_correos Creating 
+ Container arqui-integracion-api-1 Recreate 
+ Volume arqui-integracion_mensajes Created 
+ Volume arqui-integracion_mensajes Created 
+ Container arqui-integracion-rabbitmq-1 Creating 
+ Volume arqui-integracion_correos Created 
+ Volume arqui-integracion_correos Created 
+ Container arqui-integracion-mailpit-1 Creating 
+ Volume arqui-integracion_registro-desastres Created 
+ Volume arqui-integracion_registro-desastres Created 
+ Container arqui-integracion-mailpit-1 Created 
+ Container arqui-integracion-rabbitmq-1 Created 
+ Container arqui-integracion-desastres-1 Creating 
+ Container arqui-integracion-desastres-1 Created 
+ Container arqui-integracion-api-1 Recreated 
+ Container arqui-integracion-db-1 Waiting 
+ Container arqui-integracion-mailpit-1 Starting 
+ Container arqui-integracion-rabbitmq-1 Starting 
+ Container arqui-integracion-mailpit-1 Started 
+ Container arqui-integracion-rabbitmq-1 Started 
+ Container arqui-integracion-rabbitmq-1 Waiting 
+ Container arqui-integracion-db-1 Healthy 
+ Container arqui-integracion-api-1 Starting 
+ Container arqui-integracion-api-1 Started 
+ Container arqui-integracion-rabbitmq-1 Healthy 
+ Container arqui-integracion-desastres-1 Starting 
+ Container arqui-integracion-desastres-1 Started 

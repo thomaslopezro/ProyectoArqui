@@ -1,0 +1,57 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.1-management
+    environment:
+      RABBITMQ_DEFAULT_USER: taller
+      RABBITMQ_DEFAULT_PASS: taller-local
+    ports:
+      - "127.0.0.1:${AMQP_PORT:-5673}:5672"
+      - "127.0.0.1:${RABBIT_UI_PORT:-15673}:15672"
+    volumes:
+      - mensajes:/var/lib/rabbitmq
+    hostname: rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  mailpit:
+    image: axllent/mailpit:v1.27.4
+    environment:
+      MP_DATABASE: /data/mailpit.db
+    ports:
+      - "127.0.0.1:${MAIL_UI_PORT:-8026}:8025"
+    volumes:
+      - correos:/data
+  emergencias:
+    build: .
+    ports:
+      - "127.0.0.1:${APP_PORT:-8081}:8080"
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: taller
+      RABBIT_PASSWORD: taller-local
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      REGISTRO_ARCHIVO: /opt/payara/registro/estado.json
+    volumes:
+      - registro:/opt/payara/registro
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+  demo:
+    profiles: ["demo"]
+    build:
+      context: .
+      dockerfile: Dockerfile.demo
+    environment:
+      RABBIT_HOST: rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+volumes:
+  mensajes:
+  registro:
+  correos:

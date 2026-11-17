@@ -1,0 +1,227 @@
+ Image arqui-integracion-api Building 
+ Image arqui-integracion-nucleo Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.37kB done
+#1 DONE 0.0s
+
+#2 [nucleo internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.58kB done
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 447B done
+#3 DONE 0.0s
+
+#4 [nucleo internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21
+#4 DONE 0.0s
+
+#5 [nucleo internal] load metadata for quay.io/wildfly/wildfly:41.0.1.Final-jdk21
+#5 DONE 0.0s
+
+#6 [nucleo internal] load .dockerignore
+#6 transferring context: 73B done
+#6 DONE 0.0s
+
+#7 [nucleo build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320
+#7 resolve docker.io/library/maven:3.9-eclipse-temurin-21@sha256:99e61abcff91a9b1333463bd8451fb18495d6eba9250ac66a338b518f8278320 done
+#7 DONE 0.0s
+
+#8 [nucleo stage-1 1/7] FROM quay.io/wildfly/wildfly:41.0.1.Final-jdk21@sha256:a3857756e5c8bd666aa1cdbee4a92b8aa6c79dc912b764361ec6c1a7a22c6a24
+#8 resolve quay.io/wildfly/wildfly:41.0.1.Final-jdk21@sha256:a3857756e5c8bd666aa1cdbee4a92b8aa6c79dc912b764361ec6c1a7a22c6a24 done
+#8 DONE 0.0s
+
+#9 [nucleo internal] load build context
+#9 transferring context: 16.09kB done
+#9 DONE 0.0s
+
+#10 [nucleo build 2/6] WORKDIR /app
+#10 CACHED
+
+#11 [nucleo build 3/6] COPY pom.xml .
+#11 CACHED
+
+#12 [nucleo build 4/6] COPY src ./src
+#12 DONE 0.0s
+
+#13 [api internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#13 DONE 0.2s
+
+#14 [nucleo build 5/6] RUN --mount=type=cache,target=/root/.m2 mvn -B clean verify
+#14 0.496 [INFO] Scanning for projects...
+#14 0.520 [INFO] 
+#14 0.520 [INFO] -------------------< com.pgdr:plataforma-desastres >--------------------
+#14 0.520 [INFO] Building plataforma-desastres 0.2.0-SNAPSHOT
+#14 0.520 [INFO]   from pom.xml
+#14 0.520 [INFO] --------------------------------[ war ]---------------------------------
+#14 0.635 [INFO] 
+#14 0.635 [INFO] --- clean:3.2.0:clean (default-clean) @ plataforma-desastres ---
+#14 0.662 [INFO] 
+#14 0.662 [INFO] --- resources:3.4.0:resources (default-resources) @ plataforma-desastres ---
+#14 0.704 [INFO] Copying 1 resource from src/main/resources to target/classes
+#14 0.708 [INFO] 
+#14 0.708 [INFO] --- compiler:3.13.0:compile (default-compile) @ plataforma-desastres ---
+#14 0.758 [INFO] Recompiling the module because of changed source code.
+#14 0.761 [INFO] Compiling 54 source files with javac [debug release 21] to target/classes
+#14 1.262 [INFO] 
+#14 1.262 [INFO] --- resources:3.4.0:testResources (default-testResources) @ plataforma-desastres ---
+#14 1.263 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#14 1.264 [INFO] 
+#14 1.264 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ plataforma-desastres ---
+#14 1.267 [INFO] Recompiling the module because of changed dependency.
+#14 1.268 [INFO] Compiling 8 source files with javac [debug release 21] to target/test-classes
+#14 1.367 [INFO] 
+#14 1.367 [INFO] --- surefire:3.5.4:test (default-test) @ plataforma-desastres ---
+#14 1.413 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#14 1.430 [INFO] 
+#14 1.430 [INFO] -------------------------------------------------------
+#14 1.430 [INFO]  T E S T S
+#14 1.430 [INFO] -------------------------------------------------------
+#14 1.614 [INFO] Running co.edu.javeriana.emergencias.RepositorioSolicitudMemoriaTest
+#14 1.637 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in co.edu.javeriana.emergencias.RepositorioSolicitudMemoriaTest
+#14 1.637 [INFO] Running co.edu.javeriana.emergencias.AtencionSolicitudTest
+#14 1.703 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+#14 1.832 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#14 1.904 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.5/byte-buddy-agent-1.17.5.jar)
+#14 1.904 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#14 1.904 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#14 1.904 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#14 2.022 [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.391 s -- in co.edu.javeriana.emergencias.AtencionSolicitudTest
+#14 2.022 [INFO] Running co.edu.javeriana.emergencias.SolicitudServicioTest
+#14 2.034 [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in co.edu.javeriana.emergencias.SolicitudServicioTest
+#14 2.034 [INFO] Running com.pgdr.application.HuellasTest
+#14 2.043 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.pgdr.application.HuellasTest
+#14 2.043 [INFO] Running com.pgdr.application.IdentidadTest
+#14 2.047 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.pgdr.application.IdentidadTest
+#14 2.047 [INFO] Running com.pgdr.application.DesastreServiceTest
+#14 2.050 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.pgdr.application.DesastreServiceTest
+#14 2.050 [INFO] Running com.pgdr.application.CriptografiaTest
+#14 2.311 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.262 s -- in com.pgdr.application.CriptografiaTest
+#14 2.320 [INFO] 
+#14 2.320 [INFO] Results:
+#14 2.320 [INFO] 
+#14 2.320 [INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0
+#14 2.320 [INFO] 
+#14 2.324 [INFO] 
+#14 2.324 [INFO] --- war:3.4.0:war (default-war) @ plataforma-desastres ---
+#14 2.422 [INFO] Packaging webapp
+#14 2.423 [INFO] Assembling webapp [plataforma-desastres] in [/app/target/plataforma-desastres]
+#14 2.424 [INFO] Processing war project
+#14 2.425 [INFO] Copying webapp resources [/app/src/main/webapp]
+#14 2.449 [INFO] Building war: /app/target/plataforma-desastres.war
+#14 2.462 [INFO] ------------------------------------------------------------------------
+#14 2.462 [INFO] BUILD SUCCESS
+#14 2.462 [INFO] ------------------------------------------------------------------------
+#14 2.462 [INFO] Total time:  1.973 s
+#14 2.463 [INFO] Finished at: 2026-11-10T16:41:30Z
+#14 2.463 [INFO] ------------------------------------------------------------------------
+#14 DONE 2.5s
+
+#15 [nucleo build 6/6] RUN --mount=type=cache,target=/root/.m2 mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.7.1:copy     -Dartifact=org.postgresql:postgresql:42.7.8     -DoutputDirectory=/tmp/driver     -Dmdep.stripVersion=true
+#15 0.474 [INFO] Scanning for projects...
+#15 0.517 [INFO] 
+#15 0.517 [INFO] -------------------< com.pgdr:plataforma-desastres >--------------------
+#15 0.517 [INFO] Building plataforma-desastres 0.2.0-SNAPSHOT
+#15 0.517 [INFO]   from pom.xml
+#15 0.517 [INFO] --------------------------------[ war ]---------------------------------
+#15 0.518 [INFO] 
+#15 0.519 [INFO] --- dependency:3.7.1:copy (default-cli) @ plataforma-desastres ---
+#15 0.772 [INFO] Configured Artifact: org.postgresql:postgresql:42.7.8:jar
+#15 0.777 [INFO] Copying artifact 'org.postgresql:postgresql:jar:42.7.8' (/root/.m2/repository/org/postgresql/postgresql/42.7.8/postgresql-42.7.8.jar) to /tmp/driver/postgresql.jar
+#15 0.780 [INFO] ------------------------------------------------------------------------
+#15 0.780 [INFO] BUILD SUCCESS
+#15 0.780 [INFO] ------------------------------------------------------------------------
+#15 0.780 [INFO] Total time:  0.313 s
+#15 0.780 [INFO] Finished at: 2026-11-10T16:41:30Z
+#15 0.780 [INFO] ------------------------------------------------------------------------
+#15 DONE 0.8s
+
+#16 [nucleo stage-1 2/7] RUN /opt/jboss/wildfly/bin/add-user.sh -a -u "ejbcliente" -p "Arqui-Rpc-Local-2026!" --silent
+#16 CACHED
+
+#17 [nucleo stage-1 3/7] COPY --chown=jboss:0 --from=build     /tmp/driver/postgresql.jar     /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main/postgresql.jar
+#17 CACHED
+
+#18 [nucleo stage-1 4/7] COPY --chown=jboss:0     docker/postgresql/module.xml     /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main/module.xml
+#18 CACHED
+
+#19 [nucleo stage-1 5/7] COPY --chown=jboss:0     docker/wildfly/configure-datasource.cli     /tmp/configure-datasource.cli
+#19 CACHED
+
+#20 [nucleo stage-1 6/7] RUN /opt/jboss/wildfly/bin/jboss-cli.sh     --file=/tmp/configure-datasource.cli
+#20 CACHED
+
+#21 [nucleo stage-1 7/7] COPY --chown=jboss:0 --from=build     /app/target/plataforma-desastres.war     /opt/jboss/wildfly/standalone/deployments/plataforma-desastres.war
+#21 DONE 0.0s
+
+#22 [nucleo] exporting to image
+#22 exporting layers 0.0s done
+#22 exporting manifest sha256:678d54b3874fde9779dc4c842522ce4f11ff2975930bab620c08ad5da6db7225 done
+#22 exporting config sha256:ca9dfbe467677003139e6958ce79457d430367ef460da36f4e5d91082b19f047 done
+#22 exporting attestation manifest sha256:1414e2388b50ccbbb810c7fe4debe4679f29c88cb24ac577e9e5836395618785 done
+#22 exporting manifest list sha256:8992926959f18b39e045b4f0b77314eab968bef2dbac2b2dbb231c96edc4ac2a done
+#22 naming to docker.io/library/arqui-integracion-nucleo:latest done
+#22 unpacking to docker.io/library/arqui-integracion-nucleo:latest done
+#22 DONE 0.1s
+
+#23 [api internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#23 ...
+
+#24 [nucleo] resolving provenance for metadata file
+#24 DONE 0.0s
+
+#23 [api internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#23 DONE 5.0s
+
+#25 [api internal] load .dockerignore
+#25 transferring context: 72B done
+#25 DONE 0.0s
+
+#26 [api stage-1 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c
+#26 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:1a48394b6f29d3a32c79d9edecd4abda0ecbe8776d567dbfc4590ed6979c740c 0.0s done
+#26 DONE 0.0s
+
+#27 [api build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e
+#27 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e 0.0s done
+#27 DONE 0.0s
+
+#28 [api internal] load build context
+#28 transferring context: 5.82kB done
+#28 DONE 0.0s
+
+#29 [api build 3/6] COPY src/Mapas.Api/Mapas.Api.csproj Mapas.Api/
+#29 CACHED
+
+#30 [api build 2/6] WORKDIR /src
+#30 CACHED
+
+#31 [api build 4/6] RUN dotnet restore Mapas.Api/Mapas.Api.csproj
+#31 CACHED
+
+#32 [api build 5/6] COPY src/Mapas.Api/ Mapas.Api/
+#32 DONE 0.0s
+
+#33 [api build 6/6] RUN dotnet publish Mapas.Api/Mapas.Api.csproj -c Release -o /app --no-restore
+#33 1.515   Mapas.Api -> /src/Mapas.Api/bin/Release/net10.0/Mapas.Api.dll
+#33 1.532   Mapas.Api -> /app/
+#33 DONE 1.6s
+
+#34 [api stage-1 2/3] WORKDIR /app
+#34 CACHED
+
+#35 [api stage-1 3/3] COPY --from=build /app .
+#35 DONE 0.0s
+
+#36 [api] exporting to image
+#36 exporting layers 0.2s done
+#36 exporting manifest sha256:e21bf139ef9fc9a6f950d70dd4986730577eaf0cbd3c51b9ffb0f5655ec9aa59 done
+#36 exporting config sha256:059dbf4de9ebd0fe4c47fcc7be428668e4c3a8a341640863c32e2a198cc43c1d done
+#36 exporting attestation manifest sha256:8b936ce6304cf85e4f8dd14afdf0d318529d2cdc1b5d053826bf072a71353fc8 done
+#36 exporting manifest list sha256:ff6b828dd91bbbdea7560bbece43474d4f1d84fdf452ab72ed2b09d0635a874e done
+#36 naming to docker.io/library/arqui-integracion-api:latest done
+#36 unpacking to docker.io/library/arqui-integracion-api:latest 0.0s done
+#36 DONE 0.2s
+
+#37 [api] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image arqui-integracion-nucleo Built 
+ Image arqui-integracion-api Built 

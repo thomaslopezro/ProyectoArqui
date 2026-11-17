@@ -1,0 +1,13 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Territorio · Solicitudes de recursos</title><link rel="stylesheet" href="styles.css?v=solicitudes1"><script defer src="auth.js?v=solicitudes1"></script><script defer src="solicitudes.js?v=evolucion2"></script></head><body>
+<header><a class="brand" href="/">⌖ TERRITORIO</a><span class="header-note">SOLICITUDES DE RECURSOS</span></header>
+<main><section class="hero"><p class="eyebrow">ATENCIÓN DE LA EMERGENCIA</p><h1>De la necesidad a la atención.</h1><p>Registra los recursos que necesita un desastre y consulta qué solicitudes están pendientes.</p><a class="button secondary" href="/">Volver a mapas</a> <a class="button secondary" href="desastres.html">Desastres y notificaciones</a></section>
+<p id="estado" role="status">Conectando con las solicitudes…</p>
+<section id="registro-solicitud" class="panel" hidden><h2>Solicitar recursos</h2><form id="nueva-solicitud">
+<label for="evento">Desastre asociado</label><select id="evento" required><option value="">Seleccionar desastre registrado</option></select>
+<label for="recurso">Recurso requerido</label><input id="recurso" required maxlength="120" placeholder="Ej. Agua potable, botiquines, vehículos">
+<div class="two"><div><label for="cantidad">Cantidad</label><input id="cantidad" type="number" min="1" max="2147483647" step="1" required></div><div><label for="prioridad">Prioridad de la solicitud</label><select id="prioridad"><option value="BAJA">Baja</option><option value="MEDIA" selected>Media</option><option value="ALTA">Alta</option></select></div></div>
+<p>La solicitud se registra como pendiente. Un coordinador puede marcarla atendida cuando haya sido gestionada.</p><button id="crear">Registrar solicitud</button></form></section>
+<section class="panel"><h2>Solicitudes del organismo</h2><form id="filtros" class="actions"><label for="filtro-evento">Desastre</label><select id="filtro-evento"><option value="">Todos los desastres</option></select><label><input id="pendientes" type="checkbox"> Solo pendientes</label><button class="secondary">Actualizar</button></form>
+<div style="overflow-x:auto"><table><thead><tr><th>Desastre</th><th>Recurso / cantidad</th><th>Prioridad</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="solicitudes"></tbody></table></div><p id="vacio" hidden>No hay solicitudes con estos filtros.</p></section>
+<dialog id="detalle"><h2>Historial de la solicitud</h2><div id="historial"></div><button id="cerrar" class="secondary">Cerrar</button></dialog>
+</main></body></html>

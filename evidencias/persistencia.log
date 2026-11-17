@@ -1,0 +1,5 @@
+ Container arqui-integracion-db-1 Restarting 
+ Container arqui-integracion-api-1 Restarting 
+ Container arqui-integracion-db-1 Started 
+ Container arqui-integracion-api-1 Started 
+OK: registro y versión conservados tras reiniciar API y PostgreSQL.

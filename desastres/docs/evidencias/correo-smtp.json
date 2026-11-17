@@ -1,0 +1,33 @@
+{
+  "ID": "4YxsSYa577WTAkTbQvzHMU",
+  "MessageID": "1049866732.7.1792600952809@df21342a180b",
+  "From": {
+    "Name": "",
+    "Address": "alertas@emergencias.local"
+  },
+  "To": [
+    {
+      "Name": "",
+      "Address": "defensa-84655d7ef1@example.test"
+    }
+  ],
+  "Cc": [],
+  "Bcc": [],
+  "ReplyTo": [],
+  "ReturnPath": "alertas@emergencias.local",
+  "Subject": "Alerta de desastre: INUNDACION [broker-84655d7ef1]",
+  "ListUnsubscribe": {
+    "Header": "",
+    "Links": [],
+    "Errors": "",
+    "HeaderPost": ""
+  },
+  "Date": "2026-10-21T16:42:32Z",
+  "Tags": [],
+  "Username": "",
+  "Text": "Sistema: defensa\r\nID: broker-84655d7ef1\r\nTipo: INUNDACION\r\nUbicacion: Bogota - zona de demostracion\r\nSeveridad: ALTA\r\nFecha: 2026-10-21T16:42:32.323712Z\r\nDescripcion: Desbordamiento reportado por el productor de prueba\r\n",
+  "HTML": "",
+  "Size": 850,
+  "Inline": [],
+  "Attachments": []
+}

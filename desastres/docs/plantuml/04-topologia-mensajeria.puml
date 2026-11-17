@@ -1,0 +1,57 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam componentStyle rectangle
+left to right direction
+title Taller 3 — Exchanges, colas y recuperación
+
+component "Productor AMQP\no entrada REST auxiliar" as Productor
+component "Jakarta / ProcesadorMensajes" as Jakarta
+component "Despachador de salidas pendientes\nDesastreServicio + RabbitMensajes" as Despachador
+component "Sistema A" as A
+component "Sistema B" as B
+component "CorreoSmtp → Mailpit" as SMTP
+
+package "RabbitMQ" {
+  rectangle "desastres.entrada\nExchange topic durable" as Entrada
+  queue "desastres.registro" as Registro
+  queue "desastres.registro.reintento\nTTL 5 segundos" as RetryRegistro
+  queue "desastres.registro.errores" as ErrorRegistro
+  rectangle "desastres.notificaciones\nExchange topic durable" as Salida
+  queue "sistema.<id-A>" as QA
+  queue "sistema.<id-B>" as QB
+  queue "desastres.correo" as Correo
+  queue "desastres.correo.reintento\nTTL 5 segundos" as RetryCorreo
+  queue "desastres.correo.errores" as ErrorCorreo
+}
+
+Productor --> Entrada : Publicar / confirm
+Entrada --> Registro : Binding: desastre.reportado
+Registro --> Jakarta : Consumo con ACK manual
+Jakarta --> RetryRegistro : Fallo transitorio / intentos < 5
+Jakarta --> ErrorRegistro : Inválido o intentos agotados
+RetryRegistro --> Registro : Dead-letter al expirar TTL
+Jakarta --> Despachador : Registro y salida persistidos
+Despachador --> Salida : Clave sistema.<id> por destinatario
+Salida --> QA : Binding exacto sistema.<id-A>
+Salida --> QB : Binding exacto sistema.<id-B>
+QA --> A : Consumo / ACK
+QB --> B : Consumo / ACK
+Despachador --> Correo : Exchange por defecto / clave desastres.correo
+Correo --> Jakarta : Consumo con ACK manual
+Jakarta --> SMTP : Enviar correos pendientes
+Jakarta --> RetryCorreo : Fallo transitorio / intentos < 5
+Jakarta --> ErrorCorreo : Inválido o intentos agotados
+RetryCorreo --> Correo : Dead-letter al expirar TTL
+
+note bottom of Salida
+Todos los exchanges y colas son durables;
+los mensajes se publican como persistentes.
+Cada sistema registrado tiene una copia independiente.
+end note
+note bottom of ErrorCorreo
+Las colas de errores conservan el mensaje
+para revisión y reenvío manual.
+No hay espera por el número de consumidores conectados.
+end note
+@enduml
